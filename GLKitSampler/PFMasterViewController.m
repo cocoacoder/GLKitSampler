@@ -10,20 +10,34 @@
 
 #import "PFDetailViewController.h"
 
-@interface PFMasterViewController () {
-    NSMutableArray *_objects;
+
+
+
+@interface PFMasterViewController () 
+{
 }
+
 @end
+
+
+
 
 @implementation PFMasterViewController
 
+
+
 @synthesize detailViewController = _detailViewController;
+@synthesize controllers = _controllers;
+
+
 
 - (void)awakeFromNib
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
+    {
         self.clearsSelectionOnViewWillAppear = NO;
         self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
+//        self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     }
     [super awakeFromNib];
 }
@@ -31,13 +45,68 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+	
+    
+    //
+    // Special Note: Please don't forget to put this in ever again...because doing so caused me to
+    // waste the last 4 hours of my life!
+    //
     self.detailViewController = (PFDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+
+    
+    //
+    // Set-up some appearance (but not appearance proxy!) to make the UI look better
+    //
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
+    {
+        //self.view.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
+    }
+    
+    self.navigationController.navigationBar.tintColor   = [UIColor blackColor];
+    self.navigationController.navigationBar.alpha       = 0.75;
+    self.navigationController.navigationBar.translucent = YES;
+    
+    
+    //
+    // Set-up the controllers array
+    //
+    
+    
+    //
+    // Set up the dictionaries for the two views
+    //
+    NSDictionary *scribblePressUIDictionary1 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                                @"Draw A Line", @"Name", 
+                                                @"Draw a simple line using GL_POINTS", @"Summary",
+                                                @"Line", @"Type",
+                                                nil];
+    NSDictionary *scribblePressUIDictionary2 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                                @"Draw A Square", @"Name", 
+                                                @"Draw a square using GL_LINES", @"Summary", 
+                                                @"Square", @"Type",
+                                                nil];
+    NSDictionary *scribblePressUIDictionary3 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                                @"Draw A Cube", @"Name",
+                                                @"Draw a cube using GL_TRIANGLES", @"Summary",
+                                                @"Cube", @"Type",
+                                                nil];
+    NSDictionary *scribblePressUIDictionary4 = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                                @"Textured Cube", @"Name", 
+                                                @"Put a little texture on your cube.", @"Summary", 
+                                                @"CubeTexture", @"Type",
+                                                nil];
+    
+    NSArray *anArray = [[NSArray alloc] initWithObjects:
+                        scribblePressUIDictionary1, 
+                        scribblePressUIDictionary2,
+                        scribblePressUIDictionary3,
+                        scribblePressUIDictionary4,
+                        nil];
+    
+    self.controllers = anArray;
 }
+
+
 
 - (void)viewDidUnload
 {
@@ -47,22 +116,17 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) 
+    {
         return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
+    } 
+    else 
+    {
         return YES;
     }
 }
 
-- (void)insertNewObject:(id)sender
-{
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
-    }
-    [_objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-}
+
 
 #pragma mark - Table View
 
@@ -71,66 +135,69 @@
     return 1;
 }
 
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return [self.controllers count];
 }
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
+    {
+        return 80;
+    }
+    else 
+    {
+        return 75;
+    }
+
+}
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    UITableViewCell *glkitSamplerCell = [tableView dequeueReusableCellWithIdentifier:@"GLKitSamplerCell"];
 
-    NSDate *object = [_objects objectAtIndex:indexPath.row];
-    cell.textLabel.text = [object description];
-    return cell;
+    // Configure the cell.
+    NSUInteger row          = [indexPath row];
+    NSDictionary *rowData   = [self.controllers objectAtIndex:row];
+    
+    glkitSamplerCell.textLabel.text         = [rowData objectForKey:@"Name"];
+    glkitSamplerCell.detailTextLabel.text   = [rowData objectForKey:@"Summary"];
+    
+    
+    return glkitSamplerCell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }
-}
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSDate *object = [_objects objectAtIndex:indexPath.row];
-        self.detailViewController.detailItem = object;
+    //    NSUInteger row = [indexPath row];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
+    {        
+        NSDictionary *rowData = [self.controllers objectAtIndex:indexPath.row];
+        [self.detailViewController setDetailItem:[rowData objectForKey:@"Type"]];
+        NSLog(@"Just touched an index row with type: %@", [rowData objectForKey:@"Type"]);
     }
 }
 
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+    if ([[segue identifier] isEqualToString:@"showDetail"]) 
+    {
+        NSLog(@"Segueing now...");
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = [_objects objectAtIndex:indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+        NSDictionary *rowData = [self.controllers objectAtIndex:indexPath.row];
+        [[segue destinationViewController] setDetailItem:[rowData objectForKey:@"Type"]];
     }
 }
 

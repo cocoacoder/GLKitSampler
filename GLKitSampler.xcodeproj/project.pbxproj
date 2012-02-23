@@ -17,6 +17,15 @@
 		E690068D14F5A79800F39AD1 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E690068B14F5A79800F39AD1 /* MainStoryboard_iPad.storyboard */; };
 		E690069014F5A79800F39AD1 /* PFMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E690068F14F5A79800F39AD1 /* PFMasterViewController.m */; };
 		E690069314F5A79800F39AD1 /* PFDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E690069214F5A79800F39AD1 /* PFDetailViewController.m */; };
+		E690069E14F5AD2C00F39AD1 /* Star_Nursery.png in Resources */ = {isa = PBXBuildFile; fileRef = E690069D14F5AD2C00F39AD1 /* Star_Nursery.png */; };
+		E69006A314F5C47900F39AD1 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E690069F14F5C47900F39AD1 /* CoreMotion.framework */; };
+		E69006A414F5C47900F39AD1 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E69006A014F5C47900F39AD1 /* GLKit.framework */; };
+		E69006A514F5C47900F39AD1 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E69006A114F5C47900F39AD1 /* OpenGLES.framework */; };
+		E69006A614F5C47900F39AD1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E69006A214F5C47900F39AD1 /* QuartzCore.framework */; };
+		E69A094914F670DB00816ABF /* HubblePanoramic_512.png in Resources */ = {isa = PBXBuildFile; fileRef = E69A094714F670DB00816ABF /* HubblePanoramic_512.png */; };
+		E69A094A14F670DB00816ABF /* Moon_Colored_2048.png in Resources */ = {isa = PBXBuildFile; fileRef = E69A094814F670DB00816ABF /* Moon_Colored_2048.png */; };
+		E6A4C22C14F5EAFE00AF3126 /* PFGLKitSample1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A4C22B14F5EAFE00AF3126 /* PFGLKitSample1ViewController.m */; };
+		E6A4C27114F5F53000AF3126 /* White_Background.png in Resources */ = {isa = PBXBuildFile; fileRef = E6A4C27014F5F53000AF3126 /* White_Background.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,18 +33,28 @@
 		E690067614F5A79800F39AD1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E690067814F5A79800F39AD1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E690067A14F5A79800F39AD1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		E690067E14F5A79800F39AD1 /* GLKitSampler-Info.plist */ = {isa = PBXFileReference; path = "GLKitSampler-Info.plist"; sourceTree = "<group>"; };
+		E690067E14F5A79800F39AD1 /* GLKitSampler-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GLKitSampler-Info.plist"; sourceTree = "<group>"; };
 		E690068014F5A79800F39AD1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E690068214F5A79800F39AD1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E690068414F5A79800F39AD1 /* GLKitSampler-Prefix.pch */ = {isa = PBXFileReference; path = "GLKitSampler-Prefix.pch"; sourceTree = "<group>"; };
-		E690068514F5A79800F39AD1 /* PFAppDelegate.h */ = {isa = PBXFileReference; path = PFAppDelegate.h; sourceTree = "<group>"; };
+		E690068414F5A79800F39AD1 /* GLKitSampler-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GLKitSampler-Prefix.pch"; sourceTree = "<group>"; };
+		E690068514F5A79800F39AD1 /* PFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PFAppDelegate.h; sourceTree = "<group>"; };
 		E690068614F5A79800F39AD1 /* PFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PFAppDelegate.m; sourceTree = "<group>"; };
 		E690068914F5A79800F39AD1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		E690068C14F5A79800F39AD1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		E690068E14F5A79800F39AD1 /* PFMasterViewController.h */ = {isa = PBXFileReference; path = PFMasterViewController.h; sourceTree = "<group>"; };
+		E690068E14F5A79800F39AD1 /* PFMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PFMasterViewController.h; sourceTree = "<group>"; };
 		E690068F14F5A79800F39AD1 /* PFMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PFMasterViewController.m; sourceTree = "<group>"; };
-		E690069114F5A79800F39AD1 /* PFDetailViewController.h */ = {isa = PBXFileReference; path = PFDetailViewController.h; sourceTree = "<group>"; };
+		E690069114F5A79800F39AD1 /* PFDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PFDetailViewController.h; sourceTree = "<group>"; };
 		E690069214F5A79800F39AD1 /* PFDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PFDetailViewController.m; sourceTree = "<group>"; };
+		E690069D14F5AD2C00F39AD1 /* Star_Nursery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star_Nursery.png; sourceTree = "<group>"; };
+		E690069F14F5C47900F39AD1 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		E69006A014F5C47900F39AD1 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		E69006A114F5C47900F39AD1 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		E69006A214F5C47900F39AD1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E69A094714F670DB00816ABF /* HubblePanoramic_512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HubblePanoramic_512.png; sourceTree = "<group>"; };
+		E69A094814F670DB00816ABF /* Moon_Colored_2048.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Moon_Colored_2048.png; sourceTree = "<group>"; };
+		E6A4C22A14F5EAFE00AF3126 /* PFGLKitSample1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGLKitSample1ViewController.h; sourceTree = "<group>"; };
+		E6A4C22B14F5EAFE00AF3126 /* PFGLKitSample1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGLKitSample1ViewController.m; sourceTree = "<group>"; };
+		E6A4C27014F5F53000AF3126 /* White_Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = White_Background.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +62,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E69006A314F5C47900F39AD1 /* CoreMotion.framework in Frameworks */,
+				E69006A414F5C47900F39AD1 /* GLKit.framework in Frameworks */,
+				E69006A514F5C47900F39AD1 /* OpenGLES.framework in Frameworks */,
+				E69006A614F5C47900F39AD1 /* QuartzCore.framework in Frameworks */,
 				E690067714F5A79800F39AD1 /* UIKit.framework in Frameworks */,
 				E690067914F5A79800F39AD1 /* Foundation.framework in Frameworks */,
 				E690067B14F5A79800F39AD1 /* CoreGraphics.framework in Frameworks */,
@@ -75,6 +98,10 @@
 				E690067614F5A79800F39AD1 /* UIKit.framework */,
 				E690067814F5A79800F39AD1 /* Foundation.framework */,
 				E690067A14F5A79800F39AD1 /* CoreGraphics.framework */,
+				E690069F14F5C47900F39AD1 /* CoreMotion.framework */,
+				E69006A014F5C47900F39AD1 /* GLKit.framework */,
+				E69006A114F5C47900F39AD1 /* OpenGLES.framework */,
+				E69006A214F5C47900F39AD1 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -82,14 +109,20 @@
 		E690067C14F5A79800F39AD1 /* GLKitSampler */ = {
 			isa = PBXGroup;
 			children = (
+				E69A094714F670DB00816ABF /* HubblePanoramic_512.png */,
+				E69A094814F670DB00816ABF /* Moon_Colored_2048.png */,
 				E690068514F5A79800F39AD1 /* PFAppDelegate.h */,
 				E690068614F5A79800F39AD1 /* PFAppDelegate.m */,
 				E690068814F5A79800F39AD1 /* MainStoryboard_iPhone.storyboard */,
 				E690068B14F5A79800F39AD1 /* MainStoryboard_iPad.storyboard */,
+				E690069D14F5AD2C00F39AD1 /* Star_Nursery.png */,
+				E6A4C27014F5F53000AF3126 /* White_Background.png */,
 				E690068E14F5A79800F39AD1 /* PFMasterViewController.h */,
 				E690068F14F5A79800F39AD1 /* PFMasterViewController.m */,
 				E690069114F5A79800F39AD1 /* PFDetailViewController.h */,
 				E690069214F5A79800F39AD1 /* PFDetailViewController.m */,
+				E6A4C22A14F5EAFE00AF3126 /* PFGLKitSample1ViewController.h */,
+				E6A4C22B14F5EAFE00AF3126 /* PFGLKitSample1ViewController.m */,
 				E690067D14F5A79800F39AD1 /* Supporting Files */,
 			);
 			path = GLKitSampler;
@@ -161,6 +194,10 @@
 				E690068114F5A79800F39AD1 /* InfoPlist.strings in Resources */,
 				E690068A14F5A79800F39AD1 /* MainStoryboard_iPhone.storyboard in Resources */,
 				E690068D14F5A79800F39AD1 /* MainStoryboard_iPad.storyboard in Resources */,
+				E690069E14F5AD2C00F39AD1 /* Star_Nursery.png in Resources */,
+				E6A4C27114F5F53000AF3126 /* White_Background.png in Resources */,
+				E69A094914F670DB00816ABF /* HubblePanoramic_512.png in Resources */,
+				E69A094A14F670DB00816ABF /* Moon_Colored_2048.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +212,7 @@
 				E690068714F5A79800F39AD1 /* PFAppDelegate.m in Sources */,
 				E690069014F5A79800F39AD1 /* PFMasterViewController.m in Sources */,
 				E690069314F5A79800F39AD1 /* PFDetailViewController.m in Sources */,
+				E6A4C22C14F5EAFE00AF3126 /* PFGLKitSample1ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +334,7 @@
 				E690069814F5A79800F39AD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

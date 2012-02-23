@@ -12,6 +12,9 @@
 
 @interface PFMasterViewController : UITableViewController
 
+
 @property (strong, nonatomic) PFDetailViewController *detailViewController;
+@property (strong, nonatomic) NSArray *controllers;
+
 
 @end

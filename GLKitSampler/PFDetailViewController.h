@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import <GLKit/GLKit.h>
+
 @interface PFDetailViewController : UIViewController <UISplitViewControllerDelegate>
 
 @property (strong, nonatomic) id detailItem;
 
-@property (strong, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (strong, nonatomic) IBOutlet GLKView *contentView;
 
 @end

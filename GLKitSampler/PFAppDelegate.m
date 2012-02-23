@@ -8,18 +8,41 @@
 
 #import "PFAppDelegate.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 @implementation PFAppDelegate
 
 @synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //
     // Override point for customization after application launch.
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-        splitViewController.delegate = (id)navigationController.topViewController;
+    //
+
+    // 
+    // Set the background image for the iPhone table view
+    //
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) 
+    {
+        UIImageView *windowBackgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Star_Nursery"]];
+        [self.window setContentMode:UIViewContentModeScaleAspectFill];
+        [self.window addSubview:windowBackgroundImageView];
     }
+
+    //
+    // Set the background color for the iPad split view
+    //
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
+    {
+        UISplitViewController *splitViewController      = (UISplitViewController *)self.window.rootViewController;
+        UINavigationController *navigationController    = [splitViewController.viewControllers lastObject];
+        splitViewController.delegate                    = (id)navigationController.topViewController;
+        navigationController.navigationBar.tintColor    = [UIColor blackColor];
+        navigationController.navigationBar.alpha        = 0.7;
+        navigationController.navigationBar.translucent  = YES;
+    }
+    
     return YES;
 }
 							
