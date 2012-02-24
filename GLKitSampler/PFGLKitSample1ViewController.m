@@ -675,9 +675,10 @@ GLfloat gCubeVertexData[(3) * 4] =
     //
     // The difference in size from TRIANGLES vs. TRIANGLE_STRIP
     //
-    //    glDrawArrays(GL_TRIANGLES, 0, 36); // cube vertex array.
-    //    glDrawArrays(GL_TRIANGLE_STRIP, 0, 17); // For cube.
+    //    glDrawArrays(GL_POINTS, 0, 4); // For line.
     //    glDrawArrays(GL_LINE_LOOP, 0, 4); // For square.
+    //    glDrawArrays(GL_TRIANGLE_STRIP, 0, 17); // For cube.
+    //    glDrawArrays(GL_TRIANGLES, 0, 36); // cube vertex array.
     //    glDrawArrays(GL_TRIANGLE_STRIP, 0, sizeof(sphereVertices));
     
     // Need to create an indices array.

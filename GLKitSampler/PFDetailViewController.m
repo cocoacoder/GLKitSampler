@@ -10,6 +10,8 @@
 
 #import "PFGLKitSample1ViewController.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 
 
 
@@ -17,8 +19,12 @@
 
 
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
+@property (strong, nonatomic) NSString *overviewString;
 
 - (void)configureView;
+- (void)dimOverviewView;
+- (void)undimOverviewView;
+- (IBAction)glViewTransition:(id)sender;
 
 @end
 
@@ -30,22 +36,12 @@
 
 
 @synthesize detailItem              = _detailItem;
-@synthesize contentView             = _contentView;
+@synthesize overviewView            = _overviewView;
+@synthesize textOverviewTextView    = _textOverviewView;
+@synthesize overviewLabel           = _overviewLabel;
 @synthesize masterPopoverController = _masterPopoverController;
 
-
-
-#pragma mark - Segue Method
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"GLKViewSegue"]) 
-    {
-        PFGLKitSample1ViewController *glkSample1ViewController = [segue destinationViewController];        
-        glkSample1ViewController = [segue destinationViewController];
-        self.detailItem = nil;
-    }
-}
+@synthesize overviewString          = _overviewString;
     
     
     
@@ -80,17 +76,29 @@
 
 - (void)configureView
 {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
+    {
+        [self.overviewView.layer setCornerRadius:15.0];
+    }
+    else 
+    {
+        [self.overviewView.layer setCornerRadius:10.0];
+    }
+    
+
     if ([[self.detailItem description] isEqualToString:@"Line"]) 
     {
         NSLog(@"Line");
         
-        
-        //
-        // There are two ways to push the new view using the segue on StoryBoard.
-        //
-        // This way...
-        [self performSegueWithIdentifier:@"GLKViewSegue" sender:self.contentView];
+        self.overviewString = @"This GLKit example shows how to create a simple line using two points and GL_LINE_LOOP in the glDrawArrays call.";
+        [self undimOverviewView];
     }
+    else 
+    {
+        [self dimOverviewView];
+    }
+    
+    self.textOverviewTextView.text = self.overviewString;
 }
 
 
@@ -101,23 +109,18 @@
 	// Do any additional setup after loading the view, typically from a nib.
      
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Star_Nursery"]];
-    
-    [UIView animateWithDuration:0.75 animations:^{
-        self.contentView.alpha = 1.0;
-    }
-                     completion:^(BOOL finished){
-                         NSLog(@"contentView has been undimmed");
-                     }];
+        
 }
 
 
 
 - (void)viewDidUnload
 {
+    [self setOverviewLabel:nil];
     [super viewDidUnload];
     
     // Release any retained subviews of the main view.
-    self.contentView = nil;
+    self.overviewView = nil;
 }
 
 
@@ -140,6 +143,59 @@
 }
 
 
+
+#pragma mark - Segue Methods
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"GLKViewSegue"]) 
+    {
+        PFGLKitSample1ViewController *glkSample1ViewController = [segue destinationViewController];        
+        glkSample1ViewController = [segue destinationViewController];
+        self.detailItem = nil;
+    }
+}
+
+
+
+- (void)glViewTransition:(id)sender
+{
+    
+    if ([[self.detailItem description] isEqualToString:@"Line"]) 
+    {
+        [self performSegueWithIdentifier:@"GLKViewSegue" sender:sender];
+    }
+}
+
+
+
+#pragma mark - Dimming and Undimming Methods
+
+- (void)dimOverviewView
+{
+    [UIView animateWithDuration:0.75 animations:^{
+        self.overviewView.alpha = 0.0;
+    }
+                     completion:^(BOOL finished){
+                         NSLog(@"contentView has been dimmed");
+                     }];
+}
+
+
+
+- (void)undimOverviewView
+{
+    [UIView animateWithDuration:0.75 animations:^{
+        self.overviewView.alpha = 1.0;
+    }
+                     completion:^(BOOL finished){
+                         NSLog(@"contentView has been undimmed");
+                     }];
+}
+
+
+
+# pragma mark - Method for handling rotation.
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

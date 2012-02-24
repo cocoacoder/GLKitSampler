@@ -184,6 +184,9 @@
     {        
         NSDictionary *rowData = [self.controllers objectAtIndex:indexPath.row];
         [self.detailViewController setDetailItem:[rowData objectForKey:@"Type"]];
+        [[self.detailViewController overviewLabel] setText:[rowData objectForKey:@"Name"]];
+        [[self.detailViewController textOverviewTextView] setText:[rowData objectForKey:@"Summary"]];
+        //[[self.detailViewController overviewView] setAlpha:0.0];
         NSLog(@"Just touched an index row with type: %@", [rowData objectForKey:@"Type"]);
     }
 }
@@ -198,6 +201,9 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSDictionary *rowData = [self.controllers objectAtIndex:indexPath.row];
         [[segue destinationViewController] setDetailItem:[rowData objectForKey:@"Type"]];
+        [[[segue destinationViewController] overviewLabel] setText:[rowData objectForKey:@"Name"]];
+        [[[segue destinationViewController] textOverviewTextView] setText:[rowData objectForKey:@"Summary"]];
+        [[[segue destinationViewController] overviewView] setAlpha:0.0];
     }
 }
 

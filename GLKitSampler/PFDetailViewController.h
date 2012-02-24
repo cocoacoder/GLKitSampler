@@ -12,8 +12,9 @@
 
 @interface PFDetailViewController : UIViewController <UISplitViewControllerDelegate>
 
-@property (strong, nonatomic) id detailItem;
-
-@property (strong, nonatomic) IBOutlet GLKView *contentView;
+@property (strong, nonatomic)   id detailItem;
+@property (strong, nonatomic)   IBOutlet UIView *overviewView;
+@property (weak, nonatomic)     IBOutlet UILabel *overviewLabel;
+@property (strong, nonatomic)   IBOutlet UITextView *textOverviewTextView;
 
 @end
