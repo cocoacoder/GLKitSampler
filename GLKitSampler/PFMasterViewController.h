@@ -7,14 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+
+
 
 @class PFDetailViewController;
 
-@interface PFMasterViewController : UITableViewController
+@interface PFMasterViewController : UITableViewController  <NSFetchedResultsControllerDelegate>
 
 
 @property (strong, nonatomic) PFDetailViewController *detailViewController;
-@property (strong, nonatomic) NSArray *controllers;
+
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 
 @end

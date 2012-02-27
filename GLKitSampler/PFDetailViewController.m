@@ -24,6 +24,7 @@
 - (void)configureView;
 - (void)dimOverviewView;
 - (void)undimOverviewView;
+- (void)displayInfo;
 - (IBAction)glViewTransition:(id)sender;
 
 @end
@@ -42,6 +43,10 @@
 @synthesize masterPopoverController = _masterPopoverController;
 
 @synthesize overviewString          = _overviewString;
+
+@synthesize managedObject           = _managedObject;
+
+
     
     
     
@@ -49,10 +54,12 @@
 
 - (void)setDetailItem:(id)newDetailItem
 {
-    NSLog(@"Set Detail Item");
+    NSLog(@"DetailView -setDetailItem:");
     if (_detailItem != newDetailItem) 
     {
         _detailItem = newDetailItem;
+        
+        self.title = [self.detailItem description];
         
         // Update the view.
         
@@ -62,6 +69,7 @@
         //
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
         {
+            NSLog(@"DetailView -setDetailItem UIUserInterfaceIdiomPad");
             [self configureView];
         }
     }
@@ -76,29 +84,30 @@
 
 - (void)configureView
 {
+    NSLog(@"DetailView -configureView");
+
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
     {
-        [self.overviewView.layer setCornerRadius:15.0];
+        [self.overviewView.layer setCornerRadius:12.0];
     }
     else 
     {
-        [self.overviewView.layer setCornerRadius:10.0];
+        [self.overviewView.layer setCornerRadius:8.0];
     }
     
 
     if ([[self.detailItem description] isEqualToString:@"Line"]) 
     {
-        NSLog(@"Line");
-        
+        NSLog(@"DetailView -configureView Set: Line");
+ 
         self.overviewString = @"This GLKit example shows how to create a simple line using two points and GL_LINE_LOOP in the glDrawArrays call.";
         [self undimOverviewView];
     }
     else 
     {
-        [self dimOverviewView];
+        self.overviewView.alpha = 0.0;
     }
-    
-    self.textOverviewTextView.text = self.overviewString;
 }
 
 
@@ -109,14 +118,24 @@
 	// Do any additional setup after loading the view, typically from a nib.
      
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Star_Nursery"]];
-        
+    
+    
+    //
+    // Great the the iPhone...but not so great for the iPad since it loads the view on start-up.
+    // Which means, you can call methods in here until the cows come home, all to no avail on an
+    // iPad app. At least, that's how my mileage varied.
+    //
+//    self.title = [self.detailItem description];
 }
 
 
 
 - (void)viewDidUnload
 {
+    NSLog(@"DetailView unloading");
+    
     [self setOverviewLabel:nil];
+    
     [super viewDidUnload];
     
     // Release any retained subviews of the main view.
@@ -127,7 +146,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"-viewDidAppear");
+    NSLog(@"DetailView -viewDidAppear");
     
     [super viewDidAppear:animated];
     
@@ -150,9 +169,9 @@
 {
     if ([[segue identifier] isEqualToString:@"GLKViewSegue"]) 
     {
-        PFGLKitSample1ViewController *glkSample1ViewController = [segue destinationViewController];        
-        glkSample1ViewController = [segue destinationViewController];
-        self.detailItem = nil;
+//        PFGLKitSample1ViewController *glkSample1ViewController = [segue destinationViewController];        
+//        glkSample1ViewController = [segue destinationViewController];
+        //self.detailItem = nil;
     }
 }
 
@@ -185,12 +204,36 @@
 
 - (void)undimOverviewView
 {
-    [UIView animateWithDuration:0.75 animations:^{
-        self.overviewView.alpha = 1.0;
+    [UIView animateWithDuration:0.0 animations:^{
+        //
+        // This was the only way I could find, and quite by accident, to update the iPad detail view
+        // and do a fade-in. [self.view setNeedsDisplay] was useless. This seems to have the effect
+        // of kicking the detail view in the ass to get it to update and display the updated label
+        // and text view.
+        //
+        // Strange...
+        //
     }
                      completion:^(BOOL finished){
+                         [UIView animateWithDuration:0.75 animations:^{
+                             self.overviewView.alpha = 1.0;
+                             
+                             [self displayInfo];
+                         }];
                          NSLog(@"contentView has been undimmed");
                      }];
+}
+
+
+
+- (void)displayInfo
+{
+    self.overviewLabel.text = [[self.managedObject valueForKey:@"name"] description];
+    self.textOverviewTextView.text = [[self.managedObject valueForKey:@"summary"] description];
+    
+    NSLog(@"DetailView -configureView self.detailItem = %@", [self.detailItem description]);
+    NSLog(@"DetailView -configureView self.title = %@", self.overviewLabel.text);
+    NSLog(@"DetailView -configureView self.text = %@", self.textOverviewTextView.text);
 }
 
 
@@ -227,5 +270,7 @@
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
     self.masterPopoverController = nil;
 }
+
+
 
 @end

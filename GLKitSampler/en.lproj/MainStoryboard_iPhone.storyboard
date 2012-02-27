@@ -168,7 +168,7 @@
                                 <color key="textColor" white="0.95027372259999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0°" borderStyle="roundedRect" placeholder="0.0°" textAlignment="right" minimumFontSize="14" background="Black_Gradient_LabelField_Background.png" id="2kN-cK-poB">
+                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0°" borderStyle="roundedRect" placeholder="0.0°" textAlignment="right" minimumFontSize="14" id="2kN-cK-poB">
                                 <rect key="frame" x="74" y="46" width="65" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.25" colorSpace="calibratedRGB"/>
@@ -176,7 +176,7 @@
                                 <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0°" borderStyle="roundedRect" placeholder="0.0°" textAlignment="right" minimumFontSize="14" background="Black_Gradient_LabelField_Background.png" id="fG7-Dm-N5T">
+                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0°" borderStyle="roundedRect" placeholder="0.0°" textAlignment="right" minimumFontSize="14" id="fG7-Dm-N5T">
                                 <rect key="frame" x="181" y="46" width="65" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.25" colorSpace="calibratedRGB"/>
@@ -197,31 +197,6 @@
             <point key="canvasLocation" x="1337" y="64"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Black_Gradient_LabelField_Background.png" width="16" height="16"/>
-    </resources>
-    <classes>
-        <class className="PFDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="glViewTransition:"/>
-                <relationship kind="outlet" name="overviewLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="overviewView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="textOverviewTextView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="PFGLKitSample1ViewController" superclassName="GLKViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFGLKitSample1ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="resetReferenceFrame:"/>
-                <relationship kind="outlet" name="pitchLabel" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="rollLabel" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="PFMasterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFMasterViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

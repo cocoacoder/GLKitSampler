@@ -12,10 +12,18 @@
 
 
 
+static BOOL glkitSampleData = YES; // Toggle this after including data
+
+
+
+
 
 @interface PFMasterViewController () 
 {
 }
+
+- (void)addGLKitSampleWithName:(NSString *)name type:(NSString *)type summary:(NSString *)summary order:(NSInteger)order;
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -26,8 +34,10 @@
 
 
 
-@synthesize detailViewController = _detailViewController;
-@synthesize controllers = _controllers;
+@synthesize detailViewController        = _detailViewController;
+
+@synthesize fetchedResultsController    = __fetchedResultsController;
+@synthesize managedObjectContext        = __managedObjectContext;
 
 
 
@@ -46,6 +56,7 @@
 {
     [super viewDidLoad];
 	
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
     //
     // Special Note: Please don't forget to put this in ever again...because doing so caused me to
@@ -66,44 +77,23 @@
     self.navigationController.navigationBar.alpha       = 0.75;
     self.navigationController.navigationBar.translucent = YES;
     
-    
+
     //
-    // Set-up the controllers array
+    // Using Core Data to manage the GLKitSampler choices
     //
-    
-    
-    //
-    // Set up the dictionaries for the two views
-    //
-    NSDictionary *scribblePressUIDictionary1 = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                                @"Draw A Line", @"Name", 
-                                                @"Draw a simple line using GL_POINTS", @"Summary",
-                                                @"Line", @"Type",
-                                                nil];
-    NSDictionary *scribblePressUIDictionary2 = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                                @"Draw A Square", @"Name", 
-                                                @"Draw a square using GL_LINES", @"Summary", 
-                                                @"Square", @"Type",
-                                                nil];
-    NSDictionary *scribblePressUIDictionary3 = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                                @"Draw A Cube", @"Name",
-                                                @"Draw a cube using GL_TRIANGLES", @"Summary",
-                                                @"Cube", @"Type",
-                                                nil];
-    NSDictionary *scribblePressUIDictionary4 = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                                @"Textured Cube", @"Name", 
-                                                @"Put a little texture on your cube.", @"Summary", 
-                                                @"CubeTexture", @"Type",
-                                                nil];
-    
-    NSArray *anArray = [[NSArray alloc] initWithObjects:
-                        scribblePressUIDictionary1, 
-                        scribblePressUIDictionary2,
-                        scribblePressUIDictionary3,
-                        scribblePressUIDictionary4,
-                        nil];
-    
-    self.controllers = anArray;
+    if ( !glkitSampleData ) 
+    {
+        [self addGLKitSampleWithName:@"Draw A Line" type:@"Line" summary:@"Draw a simple line using GL_POINTS" order:1];
+        [self addGLKitSampleWithName:@"Draw A Square" type:@"Square" summary:@"Draw a square using GL_LINE_LOOP" order:2];
+        [self addGLKitSampleWithName:@"Draw A Cube" type:@"Cube" summary:@"Draw a cube using GL_TRIANGLES" order:3];
+        [self addGLKitSampleWithName:@"Texture A Cube" type:@"TexturedCube" summary:@"Put a little texture on your cube." order:4];
+        [self addGLKitSampleWithName:@"Draw A Sphere" type:@"Sphere" summary:@"Draw a sphere using GL_TRIANGLE_STRIP" order:5];
+        [self addGLKitSampleWithName:@"Texture A Sphere" type:@"TexturedSphere" summary:@"Put a little texture on your sphere." order:6];
+        
+        NSLog(@"Managed objects created, database populated, and now setting BOOL to TRUE");
+        
+        glkitSampleData = TRUE;
+    }
 }
 
 
@@ -132,14 +122,20 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    //    return 1;
+    NSLog(@"Number of sections: %d", [[self.fetchedResultsController sections] count]);
+    return [[self.fetchedResultsController sections] count];
 }
 
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.controllers count];
+    //    return [self.controllers count];
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    
+    NSLog(@"Number of rows: %d", [sectionInfo numberOfObjects]);
+    return [sectionInfo numberOfObjects];
 }
 
 
@@ -161,33 +157,43 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"MasterView -tableView: cellForRowAtIndexPath:");
+    
     UITableViewCell *glkitSamplerCell = [tableView dequeueReusableCellWithIdentifier:@"GLKitSamplerCell"];
 
-    // Configure the cell.
-    NSUInteger row          = [indexPath row];
-    NSDictionary *rowData   = [self.controllers objectAtIndex:row];
-    
-    glkitSamplerCell.textLabel.text         = [rowData objectForKey:@"Name"];
-    glkitSamplerCell.detailTextLabel.text   = [rowData objectForKey:@"Summary"];
-    
+    [self configureCell:glkitSamplerCell atIndexPath:indexPath];
     
     return glkitSamplerCell;
 }
 
 
 
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // The table view should not be re-orderable.
+    return YES;
+}
+
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    NSUInteger row = [indexPath row];
+    NSLog(@"MasterView -tableView: didSelectRowAtIndexPath:");
     
+    //
+    // This is used for the iPad
+    //
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
     {        
-        NSDictionary *rowData = [self.controllers objectAtIndex:indexPath.row];
-        [self.detailViewController setDetailItem:[rowData objectForKey:@"Type"]];
-        [[self.detailViewController overviewLabel] setText:[rowData objectForKey:@"Name"]];
-        [[self.detailViewController textOverviewTextView] setText:[rowData objectForKey:@"Summary"]];
-        //[[self.detailViewController overviewView] setAlpha:0.0];
-        NSLog(@"Just touched an index row with type: %@", [rowData objectForKey:@"Type"]);
+//        NSDictionary *rowData = [self.controllers objectAtIndex:indexPath.row];
+//        [self.detailViewController setDetailItemDictionary:rowData];
+        
+        NSManagedObject *managedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        
+        self.detailViewController.detailItem = [[managedObject valueForKey:@"type"] description];
+        self.detailViewController.managedObject = managedObject;
+
+        NSLog(@"Just touched an index row with type: %@", [[managedObject valueForKey:@"type"] description]);
     }
 }
 
@@ -197,14 +203,184 @@
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) 
     {
-        NSLog(@"Segueing now...");
+        NSLog(@"MasterView -prepareForSegue:");
+        
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDictionary *rowData = [self.controllers objectAtIndex:indexPath.row];
-        [[segue destinationViewController] setDetailItem:[rowData objectForKey:@"Type"]];
-        [[[segue destinationViewController] overviewLabel] setText:[rowData objectForKey:@"Name"]];
-        [[[segue destinationViewController] textOverviewTextView] setText:[rowData objectForKey:@"Summary"]];
-        [[[segue destinationViewController] overviewView] setAlpha:0.0];
+//        NSDictionary *rowData = [self.controllers objectAtIndex:indexPath.row];
+//        [[segue destinationViewController] setDetailItem:[rowData objectForKey:@"Type"]];
+
+        NSManagedObject *managedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        [[segue destinationViewController] setDetailItem:[[managedObject valueForKey:@"type"] description]];
+        [[segue destinationViewController] setManagedObject:managedObject];
+        
+        NSLog(@"Just touched an index row with type: %@", [[managedObject valueForKey:@"type"] description]);
     }
 }
 
-@end
+
+
+#pragma mark - Core Data Method for Adding Data to the Managed Object
+
+- (void)addGLKitSampleWithName:(NSString *)name type:(NSString *)type summary:(NSString *)summary order:(NSInteger)order
+{
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
+    NSManagedObject *newGLKitSample = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
+    
+    NSLog(@"Entity Name: %@", [entity name]);
+    
+    [newGLKitSample setValue:name forKey:@"name"];
+    [newGLKitSample setValue:summary forKey:@"summary"];
+    [newGLKitSample setValue:type forKey:@"type"];
+    
+    NSNumber *orderNumber = [NSNumber numberWithInt:order];
+    [newGLKitSample setValue:orderNumber forKey:@"order"];
+    
+    NSError *error = nil;
+    BOOL success = [self.managedObjectContext save:&error];
+    if ( !success ) 
+    {
+        NSLog(@"Error = %@", error);
+    }
+}
+
+
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+
+    NSLog(@"sampler cell name: %@", [object valueForKey:@"Name"]);
+    
+    cell.textLabel.text         = [[object valueForKey:@"Name"] description];
+    cell.detailTextLabel.text   = [object valueForKey:@"Summary"];
+
+}
+
+
+
+
+#pragma mark - Core Data Fetched Results Controller Methods
+
+
+- (NSFetchedResultsController *)fetchedResultsController
+{
+    NSLog(@"MasterView -fetchedResultsController");
+    
+    if (__fetchedResultsController != nil) 
+    {
+        NSLog(@"fetchedResultsController already exists");
+        return __fetchedResultsController;
+    }
+    
+    NSLog(@"fetchedResultsController does not exist, creating one.");
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    // Edit the entity name as appropriate.
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"GLKitSample" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    // Set the batch size to a suitable number.
+    [fetchRequest setFetchBatchSize:20];
+    
+    // Edit the sort key as appropriate.
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    // Edit the section name key path and cache name if appropriate.
+    // nil for section name key path means "no sections".
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+   
+    aFetchedResultsController.delegate = self;
+    self.fetchedResultsController = aFetchedResultsController;
+    
+    
+	NSError *error = nil;
+	if (![self.fetchedResultsController performFetch:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
+	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	    abort();
+	}
+    
+    return __fetchedResultsController;
+}    
+
+
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+    NSLog(@"MasterView -controllerWillChangeContent:");
+    [self.tableView beginUpdates];
+}
+
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
+{
+    switch(type) 
+    {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+    NSLog(@"fetchedResultsController delegate method -didChangeObject:...");
+    
+    UITableView *tableView = self.tableView;
+    
+    switch(type) 
+    {
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView endUpdates];
+}
+
+/*
+ // Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed. 
+ 
+ - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+ {
+ // In the simplest, most efficient, case, reload the table view.
+ [self.tableView reloadData];
+ }
+ */
+
+
+
+@end    

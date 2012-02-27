@@ -525,7 +525,7 @@ GLfloat gCubeVertexData[(3) * 4] =
     glDeleteVertexArraysOES(1, &_vertexArray);
     
     self.effect = nil;
-    
+    self.skybox = nil;
 }
 
 #pragma mark - GLKView and GLKViewController delegate methods
