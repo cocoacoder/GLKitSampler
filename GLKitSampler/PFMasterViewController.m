@@ -8,7 +8,10 @@
 
 #import "PFMasterViewController.h"
 
+#import "PFTableViewCell.h"
 #import "PFDetailViewController.h"
+
+#import <QuartzCore/QuartzCore.h>
 
 
 
@@ -39,6 +42,10 @@ static BOOL glkitSampleData = YES; // Toggle this after including data
 @synthesize fetchedResultsController    = __fetchedResultsController;
 @synthesize managedObjectContext        = __managedObjectContext;
 
+@synthesize titleLabel                  = _titleLabel;
+@synthesize summaryLabel                = _summaryLabel;
+@synthesize cellBackgroundView          = _cellBackgroundView;
+
 
 
 - (void)awakeFromNib
@@ -56,9 +63,8 @@ static BOOL glkitSampleData = YES; // Toggle this after including data
 {
     [super viewDidLoad];
 	
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-    
-    //
+
+     //
     // Special Note: Please don't forget to put this in ever again...because doing so caused me to
     // waste the last 4 hours of my life!
     //
@@ -100,6 +106,9 @@ static BOOL glkitSampleData = YES; // Toggle this after including data
 
 - (void)viewDidUnload
 {
+    [self setTitleLabel:nil];
+    [self setSummaryLabel:nil];
+    [self setCellBackgroundView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -154,13 +163,33 @@ static BOOL glkitSampleData = YES; // Toggle this after including data
 }
 
 
+/*
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    //
+    // This alternating colors of table view cells is a pretty cool effect, but not particularly useful here.
+    //
+    if (indexPath.row == 0 || indexPath.row%2 == 0) 
+    {
+        UIColor *altCellColor = [UIColor colorWithWhite:0.7 alpha:0.25];
+        cell.backgroundColor = altCellColor;
+    }
+}
+*/
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"MasterView -tableView: cellForRowAtIndexPath:");
     
-    UITableViewCell *glkitSamplerCell = [tableView dequeueReusableCellWithIdentifier:@"GLKitSamplerCell"];
-
+    PFTableViewCell *glkitSamplerCell = [tableView dequeueReusableCellWithIdentifier:@"GLKitSamplerCell"];
+    
+    if (glkitSamplerCell == nil) 
+    {
+        // Nothing to do here for now...
+    }
+    
     [self configureCell:glkitSamplerCell atIndexPath:indexPath];
     
     return glkitSamplerCell;
@@ -171,7 +200,7 @@ static BOOL glkitSampleData = YES; // Toggle this after including data
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // The table view should not be re-orderable.
-    return YES;
+    return NO;
 }
 
 
@@ -185,9 +214,6 @@ static BOOL glkitSampleData = YES; // Toggle this after including data
     //
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
     {        
-//        NSDictionary *rowData = [self.controllers objectAtIndex:indexPath.row];
-//        [self.detailViewController setDetailItemDictionary:rowData];
-        
         NSManagedObject *managedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         
         self.detailViewController.detailItem = [[managedObject valueForKey:@"type"] description];
@@ -206,8 +232,6 @@ static BOOL glkitSampleData = YES; // Toggle this after including data
         NSLog(@"MasterView -prepareForSegue:");
         
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-//        NSDictionary *rowData = [self.controllers objectAtIndex:indexPath.row];
-//        [[segue destinationViewController] setDetailItem:[rowData objectForKey:@"Type"]];
 
         NSManagedObject *managedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         [[segue destinationViewController] setDetailItem:[[managedObject valueForKey:@"type"] description]];
@@ -246,15 +270,14 @@ static BOOL glkitSampleData = YES; // Toggle this after including data
 
 
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(PFTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-
-    NSLog(@"sampler cell name: %@", [object valueForKey:@"Name"]);
     
-    cell.textLabel.text         = [[object valueForKey:@"Name"] description];
-    cell.detailTextLabel.text   = [object valueForKey:@"Summary"];
-
+    NSLog(@"sampler cell name: %@", [object valueForKey:@"name"]);
+    
+    cell.titleLabel.text     = [object valueForKey:@"name"];
+    cell.summaryLabel.text   = [object valueForKey:@"summary"];
 }
 
 

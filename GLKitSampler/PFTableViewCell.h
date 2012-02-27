@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+
+
 @interface PFTableViewCell : UITableViewCell
+
+
+@property (strong, nonatomic)   IBOutlet    UIView  *cellBackgroundView;
+@property (strong, nonatomic)   IBOutlet    UILabel *titleLabel;
+@property (strong, nonatomic)   IBOutlet    UILabel *summaryLabel;
+
 
 @end
