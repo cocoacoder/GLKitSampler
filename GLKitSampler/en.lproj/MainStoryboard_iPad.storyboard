@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2177" systemVersion="11D50" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="5">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -18,7 +19,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="448" y="-630"/>
+            <point key="canvasLocation" x="-400" y="-638"/>
         </scene>
         <!--Detail View Controller - Detail-->
         <scene sceneID="16">
@@ -69,7 +70,12 @@
                         <outlet property="overviewLabel" destination="DwD-uM-H7G" id="X8K-gD-1g5"/>
                         <outlet property="overviewView" destination="Lvi-rx-DjM" id="gCA-aL-9Ja"/>
                         <outlet property="textOverviewTextView" destination="Fqr-L0-Vj7" id="kPK-XE-LOo"/>
-                        <segue destination="7KF-Ta-lvR" kind="push" identifier="GLKViewSegue" id="Qre-Lq-lbd"/>
+                        <segue destination="7KF-Ta-lvR" kind="push" identifier="GLKViewLineSegue" id="Qre-Lq-lbd"/>
+                        <segue destination="5cr-Ku-NPP" kind="push" identifier="GLKViewSquareSegue" id="nTi-dO-ve5"/>
+                        <segue destination="l6H-RT-rib" kind="push" identifier="GLKViewCubeSegue" id="iAp-0b-yDn"/>
+                        <segue destination="nwM-Xj-3XE" kind="push" identifier="GLKViewCubeTexturedSegue" id="SEY-gB-TwP"/>
+                        <segue destination="fyu-tN-You" kind="push" identifier="GLKViewSphereSegue" id="0x1-Ma-j1x"/>
+                        <segue destination="pV7-4K-ZOH" kind="push" identifier="GLKViewSphereTexturedSegue" id="6Kl-Ey-Cqp"/>
                     </connections>
                 </viewController>
                 <tapGestureRecognizer id="Ysg-Su-YgQ">
@@ -94,7 +100,7 @@
                     </connections>
                 </splitViewController>
             </objects>
-            <point key="canvasLocation" x="-687" y="-630"/>
+            <point key="canvasLocation" x="-1535" y="-638"/>
         </scene>
         <!--Master View Controller - Master-->
         <scene sceneID="24">
@@ -155,7 +161,7 @@
                     <navigationItem key="navigationItem" title="Master" id="40"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="859" y="-631"/>
+            <point key="canvasLocation" x="11" y="-639"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="50">
@@ -172,20 +178,20 @@
             </objects>
             <point key="canvasLocation" x="-306" y="464"/>
         </scene>
-        <!--Kit Sample1 View Controller-->
+        <!--Kit Line Sample View Controller-->
         <scene sceneID="jjO-OY-wJ2">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ql3-Lc-Lvr" sceneMemberID="firstResponder"/>
-                <viewController id="7KF-Ta-lvR" customClass="PFGLKitSample1ViewController" sceneMemberID="viewController">
+                <viewController id="7KF-Ta-lvR" customClass="PFGLKitLineSampleViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EUj-PQ-BtU" customClass="GLKView">
                         <rect key="frame" x="0.0" y="64" width="703" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="pNu-j6-u6v">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pNu-j6-u6v">
                                 <rect key="frame" x="258" y="611" width="187" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="25"/>
-                                <state key="normal" title="Reset Attitude">
+                                <state key="normal" title="Reset Attitude" image="Reset Red Image.tiff">
                                     <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -237,10 +243,346 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1433" y="464"/>
+            <point key="canvasLocation" x="2065" y="-1992"/>
+        </scene>
+        <!--Kit Square Sample View Controller-->
+        <scene sceneID="sSm-vd-HWW">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dSJ-c3-7wK" sceneMemberID="firstResponder"/>
+                <viewController id="5cr-Ku-NPP" customClass="PFGLKitSquareSampleViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cYn-nd-xia" customClass="GLKView">
+                        <rect key="frame" x="0.0" y="64" width="703" height="704"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dTG-j7-4gz">
+                                <rect key="frame" x="258" y="607" width="187" height="73"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="25"/>
+                                <state key="normal" title="Reset Attitude" image="Reset Red Image.tiff">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetReferenceFrame:" destination="5cr-Ku-NPP" eventType="touchUpInside" id="Lfh-07-YLG"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Pitch" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="btw-Un-tIl">
+                                <rect key="frame" x="282" y="56" width="40" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <color key="textColor" red="0.049726247789999997" green="0.049726247789999997" blue="0.049726247789999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Roll" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="m9P-7b-txC">
+                                <rect key="frame" x="379" y="56" width="40" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <color key="textColor" red="0.049726247789999997" green="0.049726247789999997" blue="0.049726247789999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0°" borderStyle="roundedRect" placeholder="0.0°" textAlignment="right" minimumFontSize="14" id="mCm-mO-FKz">
+                                <rect key="frame" x="270" y="90" width="65" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0°" borderStyle="roundedRect" placeholder="0.0°" textAlignment="right" minimumFontSize="14" id="JoM-f7-nwx">
+                                <rect key="frame" x="367" y="90" width="65" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ops-pU-P9r"/>
+                    <connections>
+                        <outlet property="pitchLabel" destination="mCm-mO-FKz" id="PzP-Oc-BlU"/>
+                        <outlet property="rollLabel" destination="JoM-f7-nwx" id="fii-xV-ur9"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2065" y="-1016"/>
+        </scene>
+        <!--Kit Cube Sample View Controller-->
+        <scene sceneID="bMI-cg-url">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0wm-wr-AVu" sceneMemberID="firstResponder"/>
+                <viewController id="l6H-RT-rib" customClass="PFGLKitCubeSampleViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Otg-Xq-eQR" customClass="GLKView">
+                        <rect key="frame" x="0.0" y="64" width="703" height="704"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kL0-ze-sB1">
+                                <rect key="frame" x="258" y="607" width="187" height="73"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="25"/>
+                                <state key="normal" title="Reset Attitude" image="Reset Red Image.tiff">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetReferenceFrame:" destination="l6H-RT-rib" eventType="touchUpInside" id="I1G-5a-ieA"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Pitch" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="sGe-0n-sQE">
+                                <rect key="frame" x="282" y="56" width="40" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <color key="textColor" red="0.049726247789999997" green="0.049726247789999997" blue="0.049726247789999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Roll" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="zjU-sX-2F4">
+                                <rect key="frame" x="379" y="56" width="40" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <color key="textColor" red="0.049726247789999997" green="0.049726247789999997" blue="0.049726247789999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0°" borderStyle="roundedRect" placeholder="0.0°" textAlignment="right" minimumFontSize="14" id="55c-3X-H0h">
+                                <rect key="frame" x="270" y="90" width="65" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0°" borderStyle="roundedRect" placeholder="0.0°" textAlignment="right" minimumFontSize="14" id="fAG-9D-TWd">
+                                <rect key="frame" x="367" y="90" width="65" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gYW-lH-EcU"/>
+                    <connections>
+                        <outlet property="pitchLabel" destination="55c-3X-H0h" id="FzH-aQ-tHh"/>
+                        <outlet property="rollLabel" destination="fAG-9D-TWd" id="B8o-My-HPr"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2065" y="-40"/>
+        </scene>
+        <!--Kit Cube Textured View Controller-->
+        <scene sceneID="XN9-vL-G9o">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h3x-u1-gIu" sceneMemberID="firstResponder"/>
+                <viewController id="nwM-Xj-3XE" customClass="PFGLKitCubeTexturedViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bXg-Nj-Hc3" customClass="GLKView">
+                        <rect key="frame" x="0.0" y="64" width="703" height="704"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5hO-po-8bB">
+                                <rect key="frame" x="258" y="607" width="187" height="73"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="25"/>
+                                <state key="normal" title="Reset Attitude" image="Reset Red Image.tiff">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetReferenceFrame:" destination="nwM-Xj-3XE" eventType="touchUpInside" id="geV-ab-yGZ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Pitch" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="Kbt-Yt-u2S">
+                                <rect key="frame" x="282" y="56" width="40" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <color key="textColor" red="0.049726247789999997" green="0.049726247789999997" blue="0.049726247789999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Roll" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="7XX-3R-f3O">
+                                <rect key="frame" x="379" y="56" width="40" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <color key="textColor" red="0.049726247789999997" green="0.049726247789999997" blue="0.049726247789999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0°" borderStyle="roundedRect" placeholder="0.0°" textAlignment="right" minimumFontSize="14" id="Byt-46-QwU">
+                                <rect key="frame" x="270" y="90" width="65" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0°" borderStyle="roundedRect" placeholder="0.0°" textAlignment="right" minimumFontSize="14" id="gwJ-lN-1LE">
+                                <rect key="frame" x="367" y="90" width="65" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tU8-Y7-xFj"/>
+                    <connections>
+                        <outlet property="pitchLabel" destination="Byt-46-QwU" id="lad-eZ-rsG"/>
+                        <outlet property="rollLabel" destination="gwJ-lN-1LE" id="stb-GH-gUH"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2073" y="944"/>
+        </scene>
+        <!--Kit Sphere View Controller-->
+        <scene sceneID="0J0-GQ-WTl">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GyL-hF-k7M" sceneMemberID="firstResponder"/>
+                <viewController id="fyu-tN-You" customClass="PFGLKitSphereViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wI0-st-BTd" customClass="GLKView">
+                        <rect key="frame" x="0.0" y="64" width="703" height="704"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4dc-i5-jlY">
+                                <rect key="frame" x="258" y="607" width="187" height="73"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="25"/>
+                                <state key="normal" title="Reset Attitude" image="Reset Red Image.tiff">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetReferenceFrame:" destination="fyu-tN-You" eventType="touchUpInside" id="JdN-Ix-TSl"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Pitch" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="jev-v8-2Q0">
+                                <rect key="frame" x="282" y="56" width="40" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <color key="textColor" red="0.049726247789999997" green="0.049726247789999997" blue="0.049726247789999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Roll" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="WjT-7B-t5V">
+                                <rect key="frame" x="379" y="56" width="40" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <color key="textColor" red="0.049726247789999997" green="0.049726247789999997" blue="0.049726247789999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0°" borderStyle="roundedRect" placeholder="0.0°" textAlignment="right" minimumFontSize="14" id="rE5-43-EIm">
+                                <rect key="frame" x="270" y="90" width="65" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0°" borderStyle="roundedRect" placeholder="0.0°" textAlignment="right" minimumFontSize="14" id="ZgE-Cb-X5d">
+                                <rect key="frame" x="367" y="90" width="65" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kun-82-BRk"/>
+                    <connections>
+                        <outlet property="pitchLabel" destination="rE5-43-EIm" id="g40-GQ-dVj"/>
+                        <outlet property="rollLabel" destination="ZgE-Cb-X5d" id="i6y-NY-I77"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2065" y="1904"/>
+        </scene>
+        <!--Kit Sphere Textured View Controller-->
+        <scene sceneID="DLd-dv-ChT">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0FP-VT-wUg" sceneMemberID="firstResponder"/>
+                <viewController id="pV7-4K-ZOH" customClass="PFGLKitSphereTexturedViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zpt-cV-jMP" customClass="GLKView">
+                        <rect key="frame" x="0.0" y="64" width="703" height="704"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ees-p8-q4v">
+                                <rect key="frame" x="258" y="607" width="187" height="73"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="25"/>
+                                <state key="normal" title="Reset Attitude" image="Reset Red Image.tiff">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetReferenceFrame:" destination="pV7-4K-ZOH" eventType="touchUpInside" id="3kv-c4-26S"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Pitch" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="25T-gH-auV">
+                                <rect key="frame" x="282" y="56" width="40" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <color key="textColor" red="0.049726247789999997" green="0.049726247789999997" blue="0.049726247789999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Roll" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="dJF-pv-6jD">
+                                <rect key="frame" x="379" y="56" width="40" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <color key="textColor" red="0.049726247789999997" green="0.049726247789999997" blue="0.049726247789999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0°" borderStyle="roundedRect" placeholder="0.0°" textAlignment="right" minimumFontSize="14" id="AOv-Fe-n49">
+                                <rect key="frame" x="270" y="90" width="65" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0°" borderStyle="roundedRect" placeholder="0.0°" textAlignment="right" minimumFontSize="14" id="Enb-p7-cfJ">
+                                <rect key="frame" x="367" y="90" width="65" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fbB-Z1-7pq"/>
+                    <connections>
+                        <outlet property="pitchLabel" destination="AOv-Fe-n49" id="IaP-jY-bzm"/>
+                        <outlet property="rollLabel" destination="Enb-p7-cfJ" id="IOW-zJ-qOf"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2073" y="2872"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Reset Red Image.tiff" width="200" height="80"/>
         <image name="Star_Nursery.png" width="768" height="1024"/>
     </resources>
     <classes>
@@ -253,8 +595,48 @@
                 <relationship kind="outlet" name="textOverviewTextView" candidateClass="UITextView"/>
             </relationships>
         </class>
-        <class className="PFGLKitSample1ViewController" superclassName="GLKViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFGLKitSample1ViewController.h"/>
+        <class className="PFGLKitCubeSampleViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFGLKitCubeSampleViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resetReferenceFrame:"/>
+                <relationship kind="outlet" name="pitchLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="rollLabel" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PFGLKitCubeTexturedViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFGLKitCubeTexturedViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resetReferenceFrame:"/>
+                <relationship kind="outlet" name="pitchLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="rollLabel" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PFGLKitLineSampleViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFGLKitLineSampleViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resetReferenceFrame:"/>
+                <relationship kind="outlet" name="pitchLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="rollLabel" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PFGLKitSphereTexturedViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFGLKitSphereTexturedViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resetReferenceFrame:"/>
+                <relationship kind="outlet" name="pitchLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="rollLabel" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PFGLKitSphereViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFGLKitSphereViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resetReferenceFrame:"/>
+                <relationship kind="outlet" name="pitchLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="rollLabel" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PFGLKitSquareSampleViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFGLKitSquareSampleViewController.h"/>
             <relationships>
                 <relationship kind="action" name="resetReferenceFrame:"/>
                 <relationship kind="outlet" name="pitchLabel" candidateClass="UITextField"/>

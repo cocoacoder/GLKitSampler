@@ -9,6 +9,8 @@
 #import "PFDetailViewController.h"
 
 #import "PFGLKitSample1ViewController.h"
+#import "PFGLKitSquareSampleViewController.h"
+#import "PFGLKitCubeSampleViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -18,8 +20,8 @@
 @interface PFDetailViewController ()
 
 
-@property (strong, nonatomic) UIPopoverController *masterPopoverController;
-@property (strong, nonatomic) NSString *overviewString;
+@property (strong, nonatomic)   UIPopoverController *masterPopoverController;
+@property (strong, nonatomic)   NSString *overviewString;
 
 - (void)configureView;
 - (void)dimOverviewView;
@@ -61,8 +63,6 @@
         
         self.title = [self.detailItem description];
         
-        // Update the view.
-        
         //
         // Update for the iPad here. That's because the iPad loads in the detail, or second, view
         // at start-up whereas the iPhone does not.
@@ -82,50 +82,12 @@
 
 
 
-- (void)configureView
-{
-    NSLog(@"DetailView -configureView");
-
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
-    {
-        [self.overviewView.layer setCornerRadius:12.0];
-    }
-    else 
-    {
-        [self.overviewView.layer setCornerRadius:8.0];
-    }
-    
-
-    if ([[self.detailItem description] isEqualToString:@"Line"]) 
-    {
-        NSLog(@"DetailView -configureView Set: Line");
- 
-        self.overviewString = @"This GLKit example shows how to create a simple line using two points and GL_LINE_LOOP in the glDrawArrays call.";
-        [self undimOverviewView];
-    }
-    else 
-    {
-        self.overviewView.alpha = 0.0;
-    }
-}
-
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
      
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Star_Nursery"]];
-    
-    
-    //
-    // Great the the iPhone...but not so great for the iPad since it loads the view on start-up.
-    // Which means, you can call methods in here until the cows come home, all to no avail on an
-    // iPad app. At least, that's how my mileage varied.
-    //
-//    self.title = [self.detailItem description];
 }
 
 
@@ -134,12 +96,11 @@
 {
     NSLog(@"DetailView unloading");
     
-    [self setOverviewLabel:nil];
+    self.overviewLabel  = nil;
+    self.overviewString = nil;
+    self.overviewView   = nil;
     
     [super viewDidUnload];
-    
-    // Release any retained subviews of the main view.
-    self.overviewView = nil;
 }
 
 
@@ -163,15 +124,75 @@
 
 
 
-#pragma mark - Segue Methods
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)viewWillDisappear:(BOOL)animated
 {
-    if ([[segue identifier] isEqualToString:@"GLKViewSegue"]) 
+    [self dimOverviewView];
+}
+
+
+
+# pragma mark - Methods for Configuring the Interface for the Selection
+
+- (void)configureView
+{
+    NSLog(@"DetailView -configureView");
+    
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
     {
-//        PFGLKitSample1ViewController *glkSample1ViewController = [segue destinationViewController];        
-//        glkSample1ViewController = [segue destinationViewController];
-        //self.detailItem = nil;
+        [self.overviewView.layer setCornerRadius:12.0];
+    }
+    else 
+    {
+        [self.overviewView.layer setCornerRadius:8.0];
+    }
+    
+    
+    if ([[self.detailItem description] isEqualToString:@"Line"]) 
+    {
+        NSLog(@"DetailView -configureView Set: Line");
+        
+        [self undimOverviewView];
+    }
+    
+    else if ([[self.detailItem description] isEqualToString:@"Square"]) 
+    {
+        NSLog(@"DetailView -configureView Set: Square");
+        
+        [self undimOverviewView];
+    }
+    
+    else if ([[self.detailItem description] isEqualToString:@"Cube"]) 
+    {
+        NSLog(@"DetailView -configureView Set: Cube");
+        
+        [self undimOverviewView];
+    }
+    
+    else if ([[self.detailItem description] isEqualToString:@"TexturedCube"]) 
+    {
+        NSLog(@"Detail View -configureView Set: TexturedCube");
+        
+        [self undimOverviewView];
+    }
+    
+    else if ([[self.detailItem description] isEqualToString:@"Sphere"]) 
+    {
+        NSLog(@"DetailView -configureView Set: Sphere");
+        
+        [self undimOverviewView];
+    }
+    
+    else if ([[self.detailItem description] isEqualToString:@"TexturedSphere"]) 
+    {
+        NSLog(@"DetailView -configureView Set: Textured Sphere");
+        
+        [self undimOverviewView];
+    }
+
+    else 
+    {
+        self.overviewView.alpha = 0.0;
     }
 }
 
@@ -182,7 +203,32 @@
     
     if ([[self.detailItem description] isEqualToString:@"Line"]) 
     {
-        [self performSegueWithIdentifier:@"GLKViewSegue" sender:sender];
+        [self performSegueWithIdentifier:@"GLKViewLineSegue" sender:sender];
+    }
+    
+    else if ([[self.detailItem description] isEqualToString:@"Square"]) 
+    {
+        [self performSegueWithIdentifier:@"GLKViewSquareSegue" sender:sender];
+    }
+   
+    else if ([[self.detailItem description] isEqualToString:@"Cube"]) 
+    {
+        [self performSegueWithIdentifier:@"GLKViewCubeSegue" sender:sender];
+    }
+    
+    else if ([[self.detailItem description] isEqualToString:@"TexturedCube"]) 
+    {
+        [self performSegueWithIdentifier:@"GLKViewCubeTexturedSegue" sender:sender];
+    }
+    
+    else if ([[self.detailItem description] isEqualToString:@"Sphere"]) 
+    {
+        [self performSegueWithIdentifier:@"GLKViewSphereSegue" sender:sender];
+    }
+    
+    else if ([[self.detailItem description] isEqualToString:@"TexturedSphere"]) 
+    {
+        [self performSegueWithIdentifier:@"GLKViewSphereTexturedSegue" sender:sender];
     }
 }
 
@@ -216,6 +262,7 @@
     }
                      completion:^(BOOL finished){
                          [UIView animateWithDuration:0.75 animations:^{
+                             
                              self.overviewView.alpha = 1.0;
                              
                              [self displayInfo];

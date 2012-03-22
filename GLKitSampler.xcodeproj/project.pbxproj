@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E6245F45150EBA8500B3ED4B /* PFGLKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6245F44150EBA8500B3ED4B /* PFGLKViewController.m */; };
+		E660B50A14FC147A008E50EB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E660B50314FC147A008E50EB /* Default@2x.png */; };
+		E67CC6D515129C5500E9E093 /* PFGLKitCubeTexturedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E67CC6D415129C5400E9E093 /* PFGLKitCubeTexturedViewController.m */; };
+		E67CC6D81512B5D500E9E093 /* Steve_Icon_Image.png in Resources */ = {isa = PBXBuildFile; fileRef = E67CC6D71512B5D500E9E093 /* Steve_Icon_Image.png */; };
+		E67CC6DC1512FB9300E9E093 /* Reset Red Image.tiff in Resources */ = {isa = PBXBuildFile; fileRef = E67CC6DB1512FB9300E9E093 /* Reset Red Image.tiff */; };
+		E67CC6DF1512FF3100E9E093 /* PFGLKitSphereViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E67CC6DE1512FF3100E9E093 /* PFGLKitSphereViewController.m */; };
+		E67CC6E11513006500E9E093 /* PFGLKitSphereTexturedViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = E67CC6E01513006500E9E093 /* PFGLKitSphereTexturedViewController.h */; };
+		E67CC6E31513009A00E9E093 /* PFGLKitSphereTexturedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E67CC6E21513009A00E9E093 /* PFGLKitSphereTexturedViewController.m */; };
+		E67CC6E8151312F500E9E093 /* PFGLKitLineSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E67CC6E7151312F500E9E093 /* PFGLKitLineSampleViewController.m */; };
 		E690067714F5A79800F39AD1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E690067614F5A79800F39AD1 /* UIKit.framework */; };
 		E690067914F5A79800F39AD1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E690067814F5A79800F39AD1 /* Foundation.framework */; };
 		E690067B14F5A79800F39AD1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E690067A14F5A79800F39AD1 /* CoreGraphics.framework */; };
@@ -28,10 +37,30 @@
 		E69A099C14F9BC3B00816ABF /* GLKitSampler_CoreData_Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E69A099A14F9BC3B00816ABF /* GLKitSampler_CoreData_Model.xcdatamodeld */; };
 		E6A4C22C14F5EAFE00AF3126 /* PFGLKitSample1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A4C22B14F5EAFE00AF3126 /* PFGLKitSample1ViewController.m */; };
 		E6A4C27114F5F53000AF3126 /* White_Background.png in Resources */ = {isa = PBXBuildFile; fileRef = E6A4C27014F5F53000AF3126 /* White_Background.png */; };
+		E6C77C881500834D00A94053 /* LunarLanderIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E6C77C871500834D00A94053 /* LunarLanderIcon.png */; };
+		E6C77C8A1500835B00A94053 /* LunarLanderIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E6C77C891500835B00A94053 /* LunarLanderIcon@2x.png */; };
+		E6C77C8C1500837300A94053 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E6C77C8B1500837300A94053 /* Default.png */; };
+		E6C77C8E1500837F00A94053 /* LunarLanderIcon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = E6C77C8D1500837F00A94053 /* LunarLanderIcon-72.png */; };
+		E6C77C901500838C00A94053 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E6C77C8F1500838C00A94053 /* Default-Portrait~ipad.png */; };
+		E6C77C921500839800A94053 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E6C77C911500839800A94053 /* Default-Landscape~ipad.png */; };
+		E6C77C951500843600A94053 /* PFGLKitSquareSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C77C941500843600A94053 /* PFGLKitSquareSampleViewController.m */; };
+		E6C77C981500E02300A94053 /* PFGLKitCubeSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C77C971500E02300A94053 /* PFGLKitCubeSampleViewController.m */; };
 		E6F21C5D14FB446800DBFE9C /* PFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F21C5C14FB446800DBFE9C /* PFTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E6245F44150EBA8500B3ED4B /* PFGLKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGLKViewController.m; sourceTree = "<group>"; };
+		E660B50314FC147A008E50EB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		E67CC6D315129C5400E9E093 /* PFGLKitCubeTexturedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGLKitCubeTexturedViewController.h; sourceTree = "<group>"; };
+		E67CC6D415129C5400E9E093 /* PFGLKitCubeTexturedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGLKitCubeTexturedViewController.m; sourceTree = "<group>"; };
+		E67CC6D71512B5D500E9E093 /* Steve_Icon_Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Steve_Icon_Image.png; sourceTree = "<group>"; };
+		E67CC6DB1512FB9300E9E093 /* Reset Red Image.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "Reset Red Image.tiff"; sourceTree = "<group>"; };
+		E67CC6DD1512FF3100E9E093 /* PFGLKitSphereViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGLKitSphereViewController.h; sourceTree = "<group>"; };
+		E67CC6DE1512FF3100E9E093 /* PFGLKitSphereViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGLKitSphereViewController.m; sourceTree = "<group>"; };
+		E67CC6E01513006500E9E093 /* PFGLKitSphereTexturedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGLKitSphereTexturedViewController.h; sourceTree = "<group>"; };
+		E67CC6E21513009A00E9E093 /* PFGLKitSphereTexturedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGLKitSphereTexturedViewController.m; sourceTree = "<group>"; };
+		E67CC6E41513129900E9E093 /* PFGLKitLineSampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGLKitLineSampleViewController.h; sourceTree = "<group>"; };
+		E67CC6E7151312F500E9E093 /* PFGLKitLineSampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGLKitLineSampleViewController.m; sourceTree = "<group>"; };
 		E690067214F5A79800F39AD1 /* GLKitSampler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GLKitSampler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E690067614F5A79800F39AD1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E690067814F5A79800F39AD1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -60,6 +89,17 @@
 		E6A4C22A14F5EAFE00AF3126 /* PFGLKitSample1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGLKitSample1ViewController.h; sourceTree = "<group>"; };
 		E6A4C22B14F5EAFE00AF3126 /* PFGLKitSample1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGLKitSample1ViewController.m; sourceTree = "<group>"; };
 		E6A4C27014F5F53000AF3126 /* White_Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = White_Background.png; sourceTree = "<group>"; };
+		E6C77C871500834D00A94053 /* LunarLanderIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LunarLanderIcon.png; sourceTree = "<group>"; };
+		E6C77C891500835B00A94053 /* LunarLanderIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LunarLanderIcon@2x.png"; sourceTree = "<group>"; };
+		E6C77C8B1500837300A94053 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		E6C77C8D1500837F00A94053 /* LunarLanderIcon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LunarLanderIcon-72.png"; sourceTree = "<group>"; };
+		E6C77C8F1500838C00A94053 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		E6C77C911500839800A94053 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		E6C77C931500843600A94053 /* PFGLKitSquareSampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGLKitSquareSampleViewController.h; sourceTree = "<group>"; };
+		E6C77C941500843600A94053 /* PFGLKitSquareSampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGLKitSquareSampleViewController.m; sourceTree = "<group>"; };
+		E6C77C961500E02300A94053 /* PFGLKitCubeSampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGLKitCubeSampleViewController.h; sourceTree = "<group>"; };
+		E6C77C971500E02300A94053 /* PFGLKitCubeSampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGLKitCubeSampleViewController.m; sourceTree = "<group>"; };
+		E6C77CDD150EB38200A94053 /* PFGLKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGLKViewController.h; sourceTree = "<group>"; };
 		E6F21C5B14FB446800DBFE9C /* PFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTableViewCell.h; sourceTree = "<group>"; };
 		E6F21C5C14FB446800DBFE9C /* PFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,9 +123,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E61E43C315007E00008966EA /* Artwork */ = {
+			isa = PBXGroup;
+			children = (
+				E67CC6D71512B5D500E9E093 /* Steve_Icon_Image.png */,
+				E67CC6DB1512FB9300E9E093 /* Reset Red Image.tiff */,
+				E69A094714F670DB00816ABF /* HubblePanoramic_512.png */,
+				E660B50314FC147A008E50EB /* Default@2x.png */,
+				E69A094814F670DB00816ABF /* Moon_Colored_2048.png */,
+				E6A4C27014F5F53000AF3126 /* White_Background.png */,
+				E690069D14F5AD2C00F39AD1 /* Star_Nursery.png */,
+			);
+			name = Artwork;
+			sourceTree = "<group>";
+		};
+		E67CC6E91513158900E9E093 /* GLKit View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E67CC6E41513129900E9E093 /* PFGLKitLineSampleViewController.h */,
+				E67CC6E7151312F500E9E093 /* PFGLKitLineSampleViewController.m */,
+				E6C77C931500843600A94053 /* PFGLKitSquareSampleViewController.h */,
+				E6C77C941500843600A94053 /* PFGLKitSquareSampleViewController.m */,
+				E6C77C961500E02300A94053 /* PFGLKitCubeSampleViewController.h */,
+				E6C77C971500E02300A94053 /* PFGLKitCubeSampleViewController.m */,
+				E67CC6D315129C5400E9E093 /* PFGLKitCubeTexturedViewController.h */,
+				E67CC6D415129C5400E9E093 /* PFGLKitCubeTexturedViewController.m */,
+				E67CC6DD1512FF3100E9E093 /* PFGLKitSphereViewController.h */,
+				E67CC6DE1512FF3100E9E093 /* PFGLKitSphereViewController.m */,
+				E67CC6E01513006500E9E093 /* PFGLKitSphereTexturedViewController.h */,
+				E67CC6E21513009A00E9E093 /* PFGLKitSphereTexturedViewController.m */,
+				E67CC6EA151315AC00E9E093 /* Generic GLKit View Controllers */,
+			);
+			name = "GLKit View Controllers";
+			sourceTree = "<group>";
+		};
+		E67CC6EA151315AC00E9E093 /* Generic GLKit View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E6C77CDD150EB38200A94053 /* PFGLKViewController.h */,
+				E6245F44150EBA8500B3ED4B /* PFGLKViewController.m */,
+				E6A4C22A14F5EAFE00AF3126 /* PFGLKitSample1ViewController.h */,
+				E6A4C22B14F5EAFE00AF3126 /* PFGLKitSample1ViewController.m */,
+			);
+			name = "Generic GLKit View Controllers";
+			sourceTree = "<group>";
+		};
 		E690066714F5A79800F39AD1 = {
 			isa = PBXGroup;
 			children = (
+				E6C77C911500839800A94053 /* Default-Landscape~ipad.png */,
+				E6C77C8F1500838C00A94053 /* Default-Portrait~ipad.png */,
+				E6C77C8D1500837F00A94053 /* LunarLanderIcon-72.png */,
+				E6C77C8B1500837300A94053 /* Default.png */,
+				E6C77C891500835B00A94053 /* LunarLanderIcon@2x.png */,
+				E6C77C871500834D00A94053 /* LunarLanderIcon.png */,
 				E690067C14F5A79800F39AD1 /* GLKitSampler */,
 				E690067514F5A79800F39AD1 /* Frameworks */,
 				E690067314F5A79800F39AD1 /* Products */,
@@ -118,10 +209,7 @@
 		E690067C14F5A79800F39AD1 /* GLKitSampler */ = {
 			isa = PBXGroup;
 			children = (
-				E69A094714F670DB00816ABF /* HubblePanoramic_512.png */,
-				E69A094814F670DB00816ABF /* Moon_Colored_2048.png */,
-				E6A4C27014F5F53000AF3126 /* White_Background.png */,
-				E690069D14F5AD2C00F39AD1 /* Star_Nursery.png */,
+				E61E43C315007E00008966EA /* Artwork */,
 				E69A099A14F9BC3B00816ABF /* GLKitSampler_CoreData_Model.xcdatamodeld */,
 				E690068814F5A79800F39AD1 /* MainStoryboard_iPhone.storyboard */,
 				E690068B14F5A79800F39AD1 /* MainStoryboard_iPad.storyboard */,
@@ -133,8 +221,7 @@
 				E6F21C5C14FB446800DBFE9C /* PFTableViewCell.m */,
 				E690069114F5A79800F39AD1 /* PFDetailViewController.h */,
 				E690069214F5A79800F39AD1 /* PFDetailViewController.m */,
-				E6A4C22A14F5EAFE00AF3126 /* PFGLKitSample1ViewController.h */,
-				E6A4C22B14F5EAFE00AF3126 /* PFGLKitSample1ViewController.m */,
+				E67CC6E91513158900E9E093 /* GLKit View Controllers */,
 				E690067D14F5A79800F39AD1 /* Supporting Files */,
 			);
 			path = GLKitSampler;
@@ -210,6 +297,16 @@
 				E6A4C27114F5F53000AF3126 /* White_Background.png in Resources */,
 				E69A094914F670DB00816ABF /* HubblePanoramic_512.png in Resources */,
 				E69A094A14F670DB00816ABF /* Moon_Colored_2048.png in Resources */,
+				E660B50A14FC147A008E50EB /* Default@2x.png in Resources */,
+				E6C77C881500834D00A94053 /* LunarLanderIcon.png in Resources */,
+				E6C77C8A1500835B00A94053 /* LunarLanderIcon@2x.png in Resources */,
+				E6C77C8C1500837300A94053 /* Default.png in Resources */,
+				E6C77C8E1500837F00A94053 /* LunarLanderIcon-72.png in Resources */,
+				E6C77C901500838C00A94053 /* Default-Portrait~ipad.png in Resources */,
+				E6C77C921500839800A94053 /* Default-Landscape~ipad.png in Resources */,
+				E67CC6D81512B5D500E9E093 /* Steve_Icon_Image.png in Resources */,
+				E67CC6DC1512FB9300E9E093 /* Reset Red Image.tiff in Resources */,
+				E67CC6E11513006500E9E093 /* PFGLKitSphereTexturedViewController.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +324,13 @@
 				E6A4C22C14F5EAFE00AF3126 /* PFGLKitSample1ViewController.m in Sources */,
 				E69A099C14F9BC3B00816ABF /* GLKitSampler_CoreData_Model.xcdatamodeld in Sources */,
 				E6F21C5D14FB446800DBFE9C /* PFTableViewCell.m in Sources */,
+				E6C77C951500843600A94053 /* PFGLKitSquareSampleViewController.m in Sources */,
+				E6C77C981500E02300A94053 /* PFGLKitCubeSampleViewController.m in Sources */,
+				E6245F45150EBA8500B3ED4B /* PFGLKViewController.m in Sources */,
+				E67CC6D515129C5500E9E093 /* PFGLKitCubeTexturedViewController.m in Sources */,
+				E67CC6DF1512FF3100E9E093 /* PFGLKitSphereViewController.m in Sources */,
+				E67CC6E31513009A00E9E093 /* PFGLKitSphereTexturedViewController.m in Sources */,
+				E67CC6E8151312F500E9E093 /* PFGLKitLineSampleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,23 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>Default-Landscape~ipad.png</string>
+				<string>Default-Portrait~ipad.png</string>
+				<string>LunarLanderIcon.png</string>
+				<string>LunarLanderIcon@2x.png</string>
+				<string>Default.png</string>
+				<string>LunarLanderIcon-72.png</string>
+				<string>Default-Portrait~ipad.png</string>
+				<string>Default-Landscape~ipad.png</string>
+			</array>
+		</dict>
+	</dict>
 	<key>CFBundleIdentifier</key>
 	<string>PortableFrontier.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>

@@ -1,8 +1,8 @@
 //
-//  PFViewController.h
-//  OpenGL Game
+//  PFGLKitCubeSampleViewController.h
+//  GLKitSampler
 //
-//  Created by Jim Hillhouse on 2/1/12.
+//  Created by Jim Hillhouse on 3/2/12.
 //  Copyright (c) 2012 CocoaCoder.org. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 
 
-@interface PFGLKitSample1ViewController : GLKViewController
+@interface PFGLKitCubeSampleViewController : GLKViewController
 
 
 @property (weak, nonatomic) IBOutlet UITextField *pitchLabel;
@@ -18,5 +18,6 @@
 
 
 - (IBAction)resetReferenceFrame:(id)sender;
+- (void)prepareViewController;
 
 @end

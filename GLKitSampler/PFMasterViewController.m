@@ -89,9 +89,9 @@ static BOOL glkitSampleData = YES; // Toggle this after including data
     //
     if ( !glkitSampleData ) 
     {
-        [self addGLKitSampleWithName:@"Draw A Line" type:@"Line" summary:@"Draw a simple line using GL_POINTS" order:1];
+        [self addGLKitSampleWithName:@"Draw A Line" type:@"Line" summary:@"Draw a simple line using GL_LINE_STRIP" order:1];
         [self addGLKitSampleWithName:@"Draw A Square" type:@"Square" summary:@"Draw a square using GL_LINE_LOOP" order:2];
-        [self addGLKitSampleWithName:@"Draw A Cube" type:@"Cube" summary:@"Draw a cube using GL_TRIANGLES" order:3];
+        [self addGLKitSampleWithName:@"Draw A Cube" type:@"Cube" summary:@"Draw a cube using GL_TRIANGLE_STRIP" order:3];
         [self addGLKitSampleWithName:@"Texture A Cube" type:@"TexturedCube" summary:@"Put a little texture on your cube." order:4];
         [self addGLKitSampleWithName:@"Draw A Sphere" type:@"Sphere" summary:@"Draw a sphere using GL_TRIANGLE_STRIP" order:5];
         [self addGLKitSampleWithName:@"Texture A Sphere" type:@"TexturedSphere" summary:@"Put a little texture on your sphere." order:6];
@@ -221,6 +221,8 @@ static BOOL glkitSampleData = YES; // Toggle this after including data
 
         NSLog(@"Just touched an index row with type: %@", [[managedObject valueForKey:@"type"] description]);
     }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
@@ -232,6 +234,8 @@ static BOOL glkitSampleData = YES; // Toggle this after including data
         NSLog(@"MasterView -prepareForSegue:");
         
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 
         NSManagedObject *managedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         [[segue destinationViewController] setDetailItem:[[managedObject valueForKey:@"type"] description]];

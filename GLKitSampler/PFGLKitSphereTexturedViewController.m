@@ -1,12 +1,12 @@
 //
-//  PFViewController.m
-//  OpenGL Game
+//  PFGLKitSphereViewController.m
+//  GLKitSampler
 //
-//  Created by Jim Hillhouse on 2/1/12.
+//  Created by Jim Hillhouse on 3/15/12.
 //  Copyright (c) 2012 CocoaCoder.org. All rights reserved.
 //
 
-#import "PFGLKitSample1ViewController.h"
+#import "PFGLKitSphereTexturedViewController.h"
 
 #import <CoreMotion/CoreMotion.h>
 
@@ -49,207 +49,7 @@ enum
 
 
 
-//GLfloat gCubeVertexData[216] = 
-//
-// three x, y, z coordinates
-// three bytes per coordinate
-// six vertices per face
-// six faces per cube
-/*
-GLfloat gCubeVertexData[(3 + 3 + 2) * 4 * 6 * 6] =
-{
-    // Data layout for each line below is:
-    // positionX, positionY, positionZ,     normalX, normalY, normalZ, texCoord0S, texCoord0T
-    0.5f, -0.5f, -0.5f,        1.0f, 0.0f, 0.0f,        0.0, 0.0,
-    0.5f, 0.5f, -0.5f,         1.0f, 0.0f, 0.0f,        1.0, 0.0,
-    0.5f, -0.5f, 0.5f,         1.0f, 0.0f, 0.0f,        0.0, 1.0,
-    0.5f, -0.5f, 0.5f,         1.0f, 0.0f, 0.0f,        0.0, 1.0,
-    0.5f, 0.5f, 0.5f,          1.0f, 0.0f, 0.0f,        1.0, 1.0,
-    0.5f, 0.5f, -0.5f,         1.0f, 0.0f, 0.0f,        1.0, 0.0,
-    
-    0.5f, 0.5f, -0.5f,         0.0f, 1.0f, 0.0f,        1.0, 0.0,
-    -0.5f, 0.5f, -0.5f,        0.0f, 1.0f, 0.0f,        0.0, 0.0,
-    0.5f, 0.5f, 0.5f,          0.0f, 1.0f, 0.0f,        1.0, 1.0,
-    0.5f, 0.5f, 0.5f,          0.0f, 1.0f, 0.0f,        1.0, 1.0,
-    -0.5f, 0.5f, -0.5f,        0.0f, 1.0f, 0.0f,        0.0, 0.0,
-    -0.5f, 0.5f, 0.5f,         0.0f, 1.0f, 0.0f,        0.0, 1.0,
-    
-    -0.5f, 0.5f, -0.5f,        -1.0f, 0.0f, 0.0f,       1.0, 0.0,
-    -0.5f, -0.5f, -0.5f,       -1.0f, 0.0f, 0.0f,       0.0, 0.0,
-    -0.5f, 0.5f, 0.5f,         -1.0f, 0.0f, 0.0f,       1.0, 1.0,
-    -0.5f, 0.5f, 0.5f,         -1.0f, 0.0f, 0.0f,       1.0, 1.0,
-    -0.5f, -0.5f, -0.5f,       -1.0f, 0.0f, 0.0f,       0.0, 0.0,
-    -0.5f, -0.5f, 0.5f,        -1.0f, 0.0f, 0.0f,       0.0, 1.0,
-    
-    -0.5f, -0.5f, -0.5f,       0.0f, -1.0f, 0.0f,       0.0, 0.0,
-    0.5f, -0.5f, -0.5f,        0.0f, -1.0f, 0.0f,       1.0, 0.0,
-    -0.5f, -0.5f, 0.5f,        0.0f, -1.0f, 0.0f,       0.0, 1.0,
-    -0.5f, -0.5f, 0.5f,        0.0f, -1.0f, 0.0f,       0.0, 1.0,
-    0.5f, -0.5f, -0.5f,        0.0f, -1.0f, 0.0f,       1.0, 0.0,
-    0.5f, -0.5f, 0.5f,         0.0f, -1.0f, 0.0f,       1.0, 1.0,
-    
-//    0.5f, 0.5f, 0.5f,          0.0f, 0.0f, 1.0f,
-//    -0.5f, 0.5f, 0.5f,         0.0f, 0.0f, 1.0f,
-//    0.5f, -0.5f, 0.5f,         0.0f, 0.0f, 1.0f,
-//    0.5f, -0.5f, 0.5f,         0.0f, 0.0f, 1.0f,
-//    -0.5f, 0.5f, 0.5f,         0.0f, 0.0f, 1.0f,
-//    -0.5f, -0.5f, 0.5f,        0.0f, 0.0f, 1.0f,
-    
-    0.5f, 0.5f, 0.5f,          0.577f, 0.577f, 0.577f,  1.0, 1.0,
-    -0.5f, 0.5f, 0.5f,         0.577f, 0.577f, 0.577f,  0.0, 1.0,
-    0.5f, -0.5f, 0.5f,         0.577f, 0.577f, 0.577f,  1.0, 0.0,
-    0.5f, -0.5f, 0.5f,         0.577f, 0.577f, 0.577f,  1.0, 0.0,
-    -0.5f, 0.5f, 0.5f,         0.577f, 0.577f, 0.577f,  0.0, 1.0,
-    -0.5f, -0.5f, 0.5f,        0.577f, 0.577f, 0.577f,  0.0, 0.0,
-
-    0.5f, -0.5f, -0.5f,        0.0f, 0.0f, -1.0f,       1.0, 0.0,
-    -0.5f, -0.5f, -0.5f,       0.0f, 0.0f, -1.0f,       0.0, 0.0,
-    0.5f, 0.5f, -0.5f,         0.0f, 0.0f, -1.0f,       1.0, 1.0,
-    0.5f, 0.5f, -0.5f,         0.0f, 0.0f, -1.0f,       1.0, 1.0,
-    -0.5f, -0.5f, -0.5f,       0.0f, 0.0f, -1.0f,       0.0, 0.0,
-    -0.5f, 0.5f, -0.5f,        0.0f, 0.0f, -1.0f,       0.0, 1.0,
-};
-*/
-/*
-GLfloat gCubeVertexData[(3 + 2) * 6 * 6] =
-{
-    // Data layout for each line below is:
-    // positionX, positionY, positionZ, texCoord0S, texCoord0T
-    0.5f, -0.5f, -0.5f,     0.0, 0.0,
-    0.5f, 0.5f, -0.5f,      1.0, 0.0,
-    0.5f, -0.5f, 0.5f,      0.0, 1.0,
-    0.5f, -0.5f, 0.5f,      0.0, 1.0,
-    0.5f, 0.5f, 0.5f,       1.0, 1.0,
-    0.5f, 0.5f, -0.5f,      1.0, 0.0,
-    
-    0.5f, 0.5f, -0.5f,      1.0, 0.0,
-    -0.5f, 0.5f, -0.5f,     0.0, 0.0,
-    0.5f, 0.5f, 0.5f,       1.0, 1.0,
-    0.5f, 0.5f, 0.5f,       1.0, 1.0,
-    -0.5f, 0.5f, -0.5f,     0.0, 0.0,
-    -0.5f, 0.5f, 0.5f,      0.0, 1.0,
-    
-    -0.5f, 0.5f, -0.5f,     1.0, 0.0,
-    -0.5f, -0.5f, -0.5f,    0.0, 0.0,
-    -0.5f, 0.5f, 0.5f,      1.0, 1.0,
-    -0.5f, 0.5f, 0.5f,      1.0, 1.0,
-    -0.5f, -0.5f, -0.5f,    0.0, 0.0,
-    -0.5f, -0.5f, 0.5f,     0.0, 1.0,
-    
-    -0.5f, -0.5f, -0.5f,    0.0, 0.0,
-    0.5f, -0.5f, -0.5f,     1.0, 0.0,
-    -0.5f, -0.5f, 0.5f,     0.0, 1.0,
-    -0.5f, -0.5f, 0.5f,     0.0, 1.0,
-    0.5f, -0.5f, -0.5f,     1.0, 0.0,
-    0.5f, -0.5f, 0.5f,      1.0, 1.0,
-    
-    0.5f, 0.5f, 0.5f,       1.0, 1.0,
-    -0.5f, 0.5f, 0.5f,      0.0, 1.0,
-    0.5f, -0.5f, 0.5f,      1.0, 0.0,
-    0.5f, -0.5f, 0.5f,      1.0, 0.0,
-    -0.5f, 0.5f, 0.5f,      0.0, 1.0,
-    -0.5f, -0.5f, 0.5f,     0.0, 0.0,
-    
-    0.5f, -0.5f, -0.5f,     1.0, 0.0,
-    -0.5f, -0.5f, -0.5f,    0.0, 0.0,
-    0.5f, 0.5f, -0.5f,      1.0, 1.0,
-    0.5f, 0.5f, -0.5f,      1.0, 1.0,
-    -0.5f, -0.5f, -0.5f,    0.0, 0.0,
-    -0.5f, 0.5f, -0.5f,     0.0, 1.0     
-};
-*/
-/*
-GLfloat gCubeVertexData[(3) * 6 * 6] =
-{
-    // Data layout for each line below is:
-    // positionX, positionY, positionZ
-    0.5f, -0.5f, -0.5f,     
-    0.5f, 0.5f, -0.5f,      
-    0.5f, -0.5f, 0.5f,      
-    0.5f, -0.5f, 0.5f,      
-    0.5f, 0.5f, 0.5f,       
-    0.5f, 0.5f, -0.5f,      
-    
-    0.5f, 0.5f, -0.5f,      
-    -0.5f, 0.5f, -0.5f,     
-    0.5f, 0.5f, 0.5f,       
-    0.5f, 0.5f, 0.5f,       
-    -0.5f, 0.5f, -0.5f,     
-    -0.5f, 0.5f, 0.5f,      
-    
-    -0.5f, 0.5f, -0.5f,     
-    -0.5f, -0.5f, -0.5f,    
-    -0.5f, 0.5f, 0.5f,      
-    -0.5f, 0.5f, 0.5f,      
-    -0.5f, -0.5f, -0.5f,    
-    -0.5f, -0.5f, 0.5f,     
-    
-    -0.5f, -0.5f, -0.5f,    
-    0.5f, -0.5f, -0.5f,     
-    -0.5f, -0.5f, 0.5f,     
-    -0.5f, -0.5f, 0.5f,     
-    0.5f, -0.5f, -0.5f,     
-    0.5f, -0.5f, 0.5f,      
-    
-    //    0.5f, 0.5f, 0.5f, 
-    //    -0.5f, 0.5f, 0.5f,
-    //    0.5f, -0.5f, 0.5f,
-    //    0.5f, -0.5f, 0.5f,
-    //    -0.5f, 0.5f, 0.5f,
-    //    -0.5f, -0.5f, 0.5f
-    
-    0.5f, 0.5f, 0.5f,       
-    -0.5f, 0.5f, 0.5f,      
-    0.5f, -0.5f, 0.5f,      
-    0.5f, -0.5f, 0.5f,      
-    -0.5f, 0.5f, 0.5f,      
-    -0.5f, -0.5f, 0.5f,     
-    
-    0.5f, -0.5f, -0.5f,     
-    -0.5f, -0.5f, -0.5f,    
-    0.5f, 0.5f, -0.5f,      
-    0.5f, 0.5f, -0.5f,      
-    -0.5f, -0.5f, -0.5f,    
-    -0.5f, 0.5f, -0.5f         
-};
-*/
-/*
-GLfloat gCubeVertexData[(3) * 17] =
-{
-    -1,  1,  1, // Strip 1
-     1,  1,  1,
-    -1, -1,  1, // Strip 2
-     1, -1,  1,
-    -1, -1, -1, // Strip 3
-     1, -1, -1,
-    -1,  1, -1, // Strip 4
-     1,  1, -1,
-    -1,  1,  1, // Strip 5
-     1,  1,  1,
-     1, -1,  1, // Strip 6
-     1,  1, -1,
-     1, -1, -1, // Strip 7
-    -1, -1, -1,
-    -1,  1, -1, // Strip 8
-    -1, -1,  1,
-    -1,  1,  1,
-};
-*/
-
-GLfloat gSquare2VertexData[(3) * 4] = 
-{
-    -1,  1,  1,
-    -1, -1,  1,
-     1, -1,  1,
-     1,  1,  1,
-};
-
-
-
-
-
-
-@interface PFGLKitSample1ViewController () <UIGestureRecognizerDelegate>
+@interface PFGLKitSphereTexturedViewController () <UIGestureRecognizerDelegate>
 {
     GLKMatrix4 _modelViewProjectionMatrix;
     GLKMatrix3 _normalMatrix;
@@ -263,6 +63,9 @@ GLfloat gSquare2VertexData[(3) * 4] =
     GLfloat sphereVertices[ARRAY_LENGTH][3 + 3 + 2];
     GLushort sphereIndices[INDEX_LENGTH];
     int globeMaxIndex;
+    
+    GLfloat distance;
+    GLfloat updater;
 }
 
 @property (strong, nonatomic) EAGLContext *context;
@@ -274,6 +77,7 @@ GLfloat gSquare2VertexData[(3) * 4] =
 
 - (void)createSphere;
 
+// GL Calls
 - (void)setupGL;
 - (void)tearDownGL;
 
@@ -282,7 +86,7 @@ GLfloat gSquare2VertexData[(3) * 4] =
 
 
 
-@implementation PFGLKitSample1ViewController
+@implementation PFGLKitSphereTexturedViewController
 
 
 
@@ -304,7 +108,7 @@ GLfloat gSquare2VertexData[(3) * 4] =
     [super viewDidLoad];
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
-
+    
     if (!self.context) 
     {
         NSLog(@"Failed to create ES context");
@@ -313,7 +117,10 @@ GLfloat gSquare2VertexData[(3) * 4] =
     GLKView *view   = (GLKView *)self.view;
     view.context    = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
-        
+    
+    distance    = 3.0f;
+    updater     = 0.0f;    
+    
     [self setupGL];
 }
 
@@ -330,6 +137,9 @@ GLfloat gSquare2VertexData[(3) * 4] =
         [EAGLContext setCurrentContext:nil];
     }
 	self.context = nil;
+    
+    distance    = 3.0f;
+    updater     = 0.0f;
 }
 
 
@@ -360,9 +170,6 @@ GLfloat gSquare2VertexData[(3) * 4] =
 
 - (void)createSphere
 {
-//    GLfloat globeVertices[ARRAY_LENGTH][3];
-//    GLushort globeIndices[INDEX_LENGTH];
-    
 	int count = 0;
 	float TWO_PI = 2.0 * M_PI;
 	float a;
@@ -426,15 +233,13 @@ GLfloat gSquare2VertexData[(3) * 4] =
     [self createSphere];
     
     glEnable(GL_DEPTH_TEST);
-        
+    
     
     //
     // Lighting
     //
     self.effect = [[GLKBaseEffect alloc] init];
-    //    self.effect               = [[GLKReflectionMapEffect alloc] init];
     self.effect.light0.enabled  = GL_TRUE;
-//    self.effect.light0.spotCutoff = 180.0;
     
     GLfloat ambientColor    = 0.20f;
     GLfloat alpha = 1.0f;
@@ -450,34 +255,28 @@ GLfloat gSquare2VertexData[(3) * 4] =
     self.effect.light0.spotDirection    = GLKVector3Make(0.0f, 0.0f, -1.0f);
     self.effect.light0.spotCutoff       = 20.0; // 40° spread total.
     
-    
-    //
-    // Vertex, Normals, and Textures
-    //
     glGenVertexArraysOES(1, &_vertexArray);
     glBindVertexArrayOES(_vertexArray);
     
     glGenBuffers(1, &_vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
     
-//    glBufferData(GL_ARRAY_BUFFER, sizeof(gLineVertexData), gLineVertexData, GL_STATIC_DRAW);
     glBufferData(GL_ARRAY_BUFFER, sizeof(sphereVertices), sphereVertices, GL_STATIC_DRAW);
     
+    
+    //
+    // Vertices, Normals, and Textures
+    //
     // Vertices
     glEnableVertexAttribArray(GLKVertexAttribPosition);
-//    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 12, BUFFER_OFFSET(0)); // for model only 
-//    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 20, BUFFER_OFFSET(0)); // for model and texture
-//    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 24, BUFFER_OFFSET(0)); // for model and normals
     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 32, BUFFER_OFFSET(0)); // for model, normals, and texture
     
     // Normals
     glEnableVertexAttribArray(GLKVertexAttribNormal);
-    //    glVertexAttribPointer(GLKVertexAttribNormal, 3, GL_FLOAT, GL_FALSE, 24, BUFFER_OFFSET(12)); // for model and normals only
     glVertexAttribPointer(GLKVertexAttribNormal, 3, GL_FLOAT, GL_FALSE, 32, BUFFER_OFFSET(12)); // for model, normals, and texture
     
     // Texture
     glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
-//    glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 20, BUFFER_OFFSET(12)); // for model and texture only
     glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 32, BUFFER_OFFSET(24)); // for model and texture only
     
     
@@ -493,7 +292,6 @@ GLfloat gSquare2VertexData[(3) * 4] =
     self.effect.texture2d0.name = textureInfo.name;
     self.effect.texture2d0.enabled = TRUE;
     
-    
     //
     // Set-up the SkyBox
     //
@@ -505,15 +303,15 @@ GLfloat gSquare2VertexData[(3) * 4] =
     self.skybox.center              = GLKVector3Make(0.0f, 0.0f, 0.0f);
     self.skybox.textureCubeMap.name = cubemapTextureInfo.name;
     self.skybox.textureCubeMap.enabled = TRUE;
-
+    
     self.skybox.xSize               = 20.0;
     self.skybox.ySize               = 20.0;
     self.skybox.zSize               = 20.0;
     self.skybox.label               = @"Skybox";
     
     // SkyBox Reflection
-//    self.effect.textureCubeMap.name = self.skybox.textureCubeMap.name;
-//    self.effect.textureCubeMap.enabled = TRUE;
+    //    self.effect.textureCubeMap.name = self.skybox.textureCubeMap.name;
+    //    self.effect.textureCubeMap.enabled = TRUE;
     
     
     //
@@ -552,56 +350,24 @@ GLfloat gSquare2VertexData[(3) * 4] =
     
     self.effect.transform.projectionMatrix = projectionMatrix;
     self.skybox.transform.projectionMatrix = projectionMatrix;
-
+    
     
     //
     // Rotation then translation. 
     // A Rotation of 180° to place the face of the body, in this case the Moon, correctly.
     //
     GLKMatrix4 baseModelViewMatrix = GLKMatrix4MakeRotation(M_PI, 0.0f, 1.0f, 0.0f);
-    baseModelViewMatrix = GLKMatrix4Translate(baseModelViewMatrix, 0.0f, 0.0f, 3.0f);
-
-        
+    
+    
+    baseModelViewMatrix = GLKMatrix4Translate(baseModelViewMatrix, 0.0f, 0.0f, distance);
+    
+    
     //
     // Insert Core Motion if avaialble
     //
     if ([_motionMgr isDeviceMotionAvailable]) 
     {
         CMDeviceMotion *motion = [_motionMgr deviceMotion];
-        
-        
-        /*
-        //
-        // Rotation Matrix
-        //
-        CMRotationMatrix rotationMatrix = motion.attitude.rotationMatrix;
-        CMRotationMatrix rm = rotationMatrix;
-        
-        // Turn the rotation matrix into a GLK Matrix
-        GLKMatrix4 modelViewMatrix = GLKMatrix4Make(rm.m11, rm.m21, rm.m31, 0.0f,
-                                                    rm.m12, rm.m22, rm.m32, 0.0f,
-                                                    rm.m13, rm.m32, rm.m33, 0.0f,
-                                                    0.0f,   0.0f,   0.0f,   1.0f);
-
-//        GLKMatrix4 identity4Matrix = GLKMatrix4Make(1.0f, 0.0f, 0.0f, 0.0f,
-//                                                    0.0f, 1.0f, 0.0f, 0.0f,
-//                                                    0.0f, 0.0f, 1.0f, 0.0f,
-//                                                    0.0f, 0.0f, 0.0f, 1.0f);
-        
-//        modelViewMatrix = GLKMatrix4Multiply(identity4Matrix, modelViewMatrix);
-         */
-        
-        /*
-        //
-        // Quaternion
-        //
-        CMQuaternion quaternionMatrix = motion.attitude.quaternion;
-        CMQuaternion qm = quaternionMatrix;
-        
-        GLKMatrix4 modelViewMatrix = GLKMatrix4MakeRotation(qm.w, qm.x, qm.y, qm.z);
-
-        modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix, modelViewMatrix);
-        */
         
         CMAttitude *attitude = motion.attitude;
         
@@ -625,42 +391,28 @@ GLfloat gSquare2VertexData[(3) * 4] =
         modelViewMatrix = GLKMatrix4Multiply(modelViewMatrix, pitchMatrix);
         
         modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix, modelViewMatrix);
-
-//        NSLog(@"Modified modelViewMatrix %@ \n\n\n\n", NSStringFromGLKMatrix4(modelViewMatrix));
-
+        
+        //        NSLog(@"Modified modelViewMatrix %@ \n\n\n\n", NSStringFromGLKMatrix4(modelViewMatrix));
+        
         self.effect.transform.modelviewMatrix = modelViewMatrix;
         self.skybox.transform.modelviewMatrix = modelViewMatrix;
         
         
         //
-        // Update yaw, pitch, and roll labels
+        // Update pitch, and roll labels
         //
         [self.pitchLabel setText:[NSString stringWithFormat:@"%6.2f""°", GLKMathRadiansToDegrees(pitchAngle)]];            
         [self.rollLabel setText:[NSString stringWithFormat:@"%6.2f""°", GLKMathRadiansToDegrees(rollAngle)]];        
-
     }
     else
     {
-        //baseModelViewMatrix = GLKMatrix4Rotate(baseModelViewMatrix, _rotation, 0.0f, 1.0f, 0.0f);
-        baseModelViewMatrix = GLKMatrix4Rotate(baseModelViewMatrix, -M_PI_4, 1.0f, 0.0f, 0.0f);
-        
         // Compute the model view matrix for the object rendered with GLKit
-//        GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, 0.0f);
-//        modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, _rotation, 1.0f, 1.0f, 1.0f);
-        GLKMatrix4 modelViewMatrix = GLKMatrix4MakeRotation(_rotation, 1.0f, 1.0f, 1.0f);
+        GLKMatrix4 modelViewMatrix = GLKMatrix4MakeRotation(_rotation / 4.0, 0.0f, 1.0f, 0.0f);
         modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix, modelViewMatrix);
         
         self.effect.transform.modelviewMatrix = modelViewMatrix;
         
-        //
-        // Compute the model view matrix for the object rendered with ES2
-        //    modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, 0.0f);
-        //    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, _rotation, 1.0f, 1.0f, 1.0f);
-        
-        
-        //
         // Compute model view matrix for the skybox -- similar but slower, opposite rotation
-        //
         modelViewMatrix = GLKMatrix4MakeRotation(-_rotation/1.5, 1.0f, 1.0f, 1.0f);
         modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix, modelViewMatrix);
         
@@ -690,18 +442,7 @@ GLfloat gSquare2VertexData[(3) * 4] =
     // Render the object with GLKit
     [self.effect prepareToDraw];
     
-    
     glPointSize(10.0);
-    
-    
-    //
-    // The difference in size from TRIANGLES vs. TRIANGLE_STRIP
-    //
-    //    glDrawArrays(GL_POINTS, 0, 4); // For line.
-    //    glDrawArrays(GL_LINE_LOOP, 0, 4); // For square.
-    //    glDrawArrays(GL_TRIANGLE_STRIP, 0, 17); // For cube.
-    //    glDrawArrays(GL_TRIANGLES, 0, 36); // cube vertex array.
-    //    glDrawArrays(GL_TRIANGLE_STRIP, 0, sizeof(sphereVertices));
     
     // Need to create an indices array.
     glDrawElements(GL_TRIANGLE_STRIP, globeMaxIndex, GL_UNSIGNED_SHORT, sphereIndices);
@@ -717,6 +458,43 @@ GLfloat gSquare2VertexData[(3) * 4] =
     if ([_motionMgr isDeviceMotionActive]) 
     {
         self.referenceFrame = [[_motionMgr deviceMotion] attitude];
+    }
+}
+
+
+
+-(void)handleZoomFromGestureRecognizer:(UIPinchGestureRecognizer *)recognizer
+{
+    NSLog(@"Pinch Gesture Recognizer");
+    
+    //
+    // This sets the spacing between layers.
+    //
+    updater = [recognizer scale];
+    
+    NSLog(@"Updater: %f", updater);
+    
+    if ([recognizer state] == UIGestureRecognizerStateChanged) 
+    {
+        if ( updater > 1.0 ) 
+        {
+            // Zoom-in
+            if ( distance >= 1.25f ) 
+            {
+                distance -= updater / 60.0f;
+            }
+        }
+        else
+        {
+            if ( distance <= 6.0 ) 
+            {
+                distance += updater / 10.f;
+            }
+            if ( distance > 6.0 ) 
+            {
+                distance = 6.0;
+            }
+        }
     }
 }
 
