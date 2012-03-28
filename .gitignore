@@ -23,8 +23,8 @@
 # Logs and databases #
 ######################
 *.log
-*.sql
-*.sqlite
+#*.sql#
+#*.sqlite# #I want to pass along the SQLite data base in this app#
 
 # OS generated files #
 ######################
