@@ -9,6 +9,17 @@
 /* Begin PBXBuildFile section */
 		E6245F45150EBA8500B3ED4B /* PFGLKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6245F44150EBA8500B3ED4B /* PFGLKViewController.m */; };
 		E660B50A14FC147A008E50EB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E660B50314FC147A008E50EB /* Default@2x.png */; };
+		E6781D071523E8A100A0CDF6 /* MoonMap_2500x1250.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E6781D061523E8A100A0CDF6 /* MoonMap_2500x1250.jpg */; };
+		E6781D0A1523EE1300A0CDF6 /* StarryBackgroundCubePanoramic.png in Resources */ = {isa = PBXBuildFile; fileRef = E6781D091523EE1300A0CDF6 /* StarryBackgroundCubePanoramic.png */; };
+		E6781D0C1523EF3500A0CDF6 /* cube_faces_large.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E6781D0B1523EF3500A0CDF6 /* cube_faces_large.jpg */; };
+		E6781D0E1523F99300A0CDF6 /* StarryBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E6781D0D1523F99300A0CDF6 /* StarryBackground.png */; };
+		E6781D1C1523FF3400A0CDF6 /* Stars.png in Resources */ = {isa = PBXBuildFile; fileRef = E6781D1B1523FF3400A0CDF6 /* Stars.png */; };
+		E6781D1E1523FF7700A0CDF6 /* Stars_Small.png in Resources */ = {isa = PBXBuildFile; fileRef = E6781D1D1523FF7700A0CDF6 /* Stars_Small.png */; };
+		E6781D201523FFD500A0CDF6 /* Stars_Silly.png in Resources */ = {isa = PBXBuildFile; fileRef = E6781D1F1523FFD500A0CDF6 /* Stars_Silly.png */; };
+		E6781D221524030200A0CDF6 /* Stars_Silly_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E6781D211524030200A0CDF6 /* Stars_Silly_2.jpg */; };
+		E6781D241524059B00A0CDF6 /* Stars3.png in Resources */ = {isa = PBXBuildFile; fileRef = E6781D231524059A00A0CDF6 /* Stars3.png */; };
+		E6781D26152405F000A0CDF6 /* HubblePanoramic_512_2.png in Resources */ = {isa = PBXBuildFile; fileRef = E6781D25152405F000A0CDF6 /* HubblePanoramic_512_2.png */; };
+		E6781D281524075D00A0CDF6 /* Stars_Square.png in Resources */ = {isa = PBXBuildFile; fileRef = E6781D271524075D00A0CDF6 /* Stars_Square.png */; };
 		E67CC6D515129C5500E9E093 /* PFGLKitCubeTexturedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E67CC6D415129C5400E9E093 /* PFGLKitCubeTexturedViewController.m */; };
 		E67CC6D81512B5D500E9E093 /* Steve_Icon_Image.png in Resources */ = {isa = PBXBuildFile; fileRef = E67CC6D71512B5D500E9E093 /* Steve_Icon_Image.png */; };
 		E67CC6DC1512FB9300E9E093 /* Reset Red Image.tiff in Resources */ = {isa = PBXBuildFile; fileRef = E67CC6DB1512FB9300E9E093 /* Reset Red Image.tiff */; };
@@ -51,6 +62,17 @@
 /* Begin PBXFileReference section */
 		E6245F44150EBA8500B3ED4B /* PFGLKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGLKViewController.m; sourceTree = "<group>"; };
 		E660B50314FC147A008E50EB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		E6781D061523E8A100A0CDF6 /* MoonMap_2500x1250.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MoonMap_2500x1250.jpg; sourceTree = "<group>"; };
+		E6781D091523EE1300A0CDF6 /* StarryBackgroundCubePanoramic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarryBackgroundCubePanoramic.png; sourceTree = "<group>"; };
+		E6781D0B1523EF3500A0CDF6 /* cube_faces_large.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cube_faces_large.jpg; sourceTree = "<group>"; };
+		E6781D0D1523F99300A0CDF6 /* StarryBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarryBackground.png; sourceTree = "<group>"; };
+		E6781D1B1523FF3400A0CDF6 /* Stars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stars.png; sourceTree = "<group>"; };
+		E6781D1D1523FF7700A0CDF6 /* Stars_Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stars_Small.png; sourceTree = "<group>"; };
+		E6781D1F1523FFD500A0CDF6 /* Stars_Silly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stars_Silly.png; sourceTree = "<group>"; };
+		E6781D211524030200A0CDF6 /* Stars_Silly_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Stars_Silly_2.jpg; sourceTree = "<group>"; };
+		E6781D231524059A00A0CDF6 /* Stars3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stars3.png; sourceTree = "<group>"; };
+		E6781D25152405F000A0CDF6 /* HubblePanoramic_512_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HubblePanoramic_512_2.png; sourceTree = "<group>"; };
+		E6781D271524075D00A0CDF6 /* Stars_Square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stars_Square.png; sourceTree = "<group>"; };
 		E67CC6D315129C5400E9E093 /* PFGLKitCubeTexturedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGLKitCubeTexturedViewController.h; sourceTree = "<group>"; };
 		E67CC6D415129C5400E9E093 /* PFGLKitCubeTexturedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGLKitCubeTexturedViewController.m; sourceTree = "<group>"; };
 		E67CC6D71512B5D500E9E093 /* Steve_Icon_Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Steve_Icon_Image.png; sourceTree = "<group>"; };
@@ -126,6 +148,17 @@
 		E61E43C315007E00008966EA /* Artwork */ = {
 			isa = PBXGroup;
 			children = (
+				E6781D271524075D00A0CDF6 /* Stars_Square.png */,
+				E6781D25152405F000A0CDF6 /* HubblePanoramic_512_2.png */,
+				E6781D231524059A00A0CDF6 /* Stars3.png */,
+				E6781D211524030200A0CDF6 /* Stars_Silly_2.jpg */,
+				E6781D1F1523FFD500A0CDF6 /* Stars_Silly.png */,
+				E6781D1D1523FF7700A0CDF6 /* Stars_Small.png */,
+				E6781D1B1523FF3400A0CDF6 /* Stars.png */,
+				E6781D0D1523F99300A0CDF6 /* StarryBackground.png */,
+				E6781D0B1523EF3500A0CDF6 /* cube_faces_large.jpg */,
+				E6781D091523EE1300A0CDF6 /* StarryBackgroundCubePanoramic.png */,
+				E6781D061523E8A100A0CDF6 /* MoonMap_2500x1250.jpg */,
 				E67CC6D71512B5D500E9E093 /* Steve_Icon_Image.png */,
 				E67CC6DB1512FB9300E9E093 /* Reset Red Image.tiff */,
 				E69A094714F670DB00816ABF /* HubblePanoramic_512.png */,
@@ -307,6 +340,17 @@
 				E67CC6D81512B5D500E9E093 /* Steve_Icon_Image.png in Resources */,
 				E67CC6DC1512FB9300E9E093 /* Reset Red Image.tiff in Resources */,
 				E67CC6E11513006500E9E093 /* PFGLKitSphereTexturedViewController.h in Resources */,
+				E6781D071523E8A100A0CDF6 /* MoonMap_2500x1250.jpg in Resources */,
+				E6781D0A1523EE1300A0CDF6 /* StarryBackgroundCubePanoramic.png in Resources */,
+				E6781D0C1523EF3500A0CDF6 /* cube_faces_large.jpg in Resources */,
+				E6781D0E1523F99300A0CDF6 /* StarryBackground.png in Resources */,
+				E6781D1C1523FF3400A0CDF6 /* Stars.png in Resources */,
+				E6781D1E1523FF7700A0CDF6 /* Stars_Small.png in Resources */,
+				E6781D201523FFD500A0CDF6 /* Stars_Silly.png in Resources */,
+				E6781D221524030200A0CDF6 /* Stars_Silly_2.jpg in Resources */,
+				E6781D241524059B00A0CDF6 /* Stars3.png in Resources */,
+				E6781D26152405F000A0CDF6 /* HubblePanoramic_512_2.png in Resources */,
+				E6781D281524075D00A0CDF6 /* Stars_Square.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

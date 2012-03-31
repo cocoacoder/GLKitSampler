@@ -118,8 +118,8 @@ enum
     view.context    = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
     
-    distance    = 3.0f;
-    updater     = 0.0f;    
+    distance    = -3.0f;
+    updater     =  0.0f;    
     
     [self setupGL];
 }
@@ -138,8 +138,8 @@ enum
     }
 	self.context = nil;
     
-    distance    = 3.0f;
-    updater     = 0.0f;
+    distance    = -3.0f;
+    updater     =  0.0f;
 }
 
 
@@ -241,7 +241,7 @@ enum
     self.effect = [[GLKBaseEffect alloc] init];
     self.effect.light0.enabled  = GL_TRUE;
     
-    GLfloat ambientColor    = 0.20f;
+    GLfloat ambientColor    = 0.70f;
     GLfloat alpha = 1.0f;
     self.effect.light0.ambientColor = GLKVector4Make(ambientColor, ambientColor, ambientColor, alpha);
     
@@ -286,8 +286,13 @@ enum
     //
     // Load the texture for the model
     //
-    NSString *texturePath       = [[NSBundle mainBundle] pathForResource:@"Moon_Colored_2048" ofType:@"png"];
-    GLKTextureInfo *textureInfo = [GLKTextureLoader textureWithContentsOfFile:texturePath options:nil error:nil];
+    NSDictionary *modelTextureOptions = [NSDictionary dictionaryWithObjectsAndKeys:
+                                         [NSNumber numberWithBool:NO], GLKTextureLoaderOriginBottomLeft, 
+                                         [NSNumber numberWithBool:NO], GLKTextureLoaderGrayscaleAsAlpha, 
+                                         [NSNumber numberWithBool:YES], GLKTextureLoaderApplyPremultiplication,
+                                         [NSNumber numberWithBool:NO], GLKTextureLoaderGenerateMipmaps, nil];    
+    NSString *texturePath       = [[NSBundle mainBundle] pathForResource:@"MoonMap_2500x1250" ofType:@"jpg"];
+    GLKTextureInfo *textureInfo = [GLKTextureLoader textureWithContentsOfFile:texturePath options:modelTextureOptions error:nil];
     
     self.effect.texture2d0.name = textureInfo.name;
     self.effect.texture2d0.enabled = TRUE;
@@ -295,8 +300,13 @@ enum
     //
     // Set-up the SkyBox
     //
-    NSString *cubemapTexturePath        = [[NSBundle mainBundle] pathForResource:@"HubblePanoramic_512" ofType:@"png"];
-    GLKTextureInfo *cubemapTextureInfo  = [GLKTextureLoader cubeMapWithContentsOfFile:cubemapTexturePath options:nil error:nil];
+    NSError *error;
+    NSDictionary *cubeTextureOptions    = [NSDictionary dictionaryWithObjectsAndKeys:
+                                           [NSNumber numberWithBool:YES], GLKTextureLoaderOriginBottomLeft,
+                                           [NSNumber numberWithBool:YES], GLKTextureLoaderApplyPremultiplication, nil];
+    
+    NSString *cubemapTexturePath        = [[NSBundle mainBundle] pathForResource:@"Stars" ofType:@"png"];
+    GLKTextureInfo *cubemapTextureInfo  = [GLKTextureLoader cubeMapWithContentsOfFile:cubemapTexturePath options:cubeTextureOptions error:nil];
     
     self.skybox                     = [[GLKSkyboxEffect alloc] init];
     
@@ -304,9 +314,9 @@ enum
     self.skybox.textureCubeMap.name = cubemapTextureInfo.name;
     self.skybox.textureCubeMap.enabled = TRUE;
     
-    self.skybox.xSize               = 20.0;
-    self.skybox.ySize               = 20.0;
-    self.skybox.zSize               = 20.0;
+    self.skybox.xSize               = 50.0;
+    self.skybox.ySize               = 50.0;
+    self.skybox.zSize               = 50.0;
     self.skybox.label               = @"Skybox";
     
     // SkyBox Reflection
@@ -356,10 +366,10 @@ enum
     // Rotation then translation. 
     // A Rotation of 180° to place the face of the body, in this case the Moon, correctly.
     //
-    GLKMatrix4 baseModelViewMatrix = GLKMatrix4MakeRotation(M_PI, 0.0f, 1.0f, 0.0f);
+    //GLKMatrix4 baseModelViewMatrix = GLKMatrix4MakeRotation(M_PI, 0.0f, 1.0f, 0.0f);
+    //baseModelViewMatrix = GLKMatrix4Translate(baseModelViewMatrix, 0.0f, 0.0f, distance);
     
-    
-    baseModelViewMatrix = GLKMatrix4Translate(baseModelViewMatrix, 0.0f, 0.0f, distance);
+    GLKMatrix4 baseModelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, distance);
     
     
     //
