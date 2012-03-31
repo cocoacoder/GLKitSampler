@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E6245F45150EBA8500B3ED4B /* PFGLKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6245F44150EBA8500B3ED4B /* PFGLKViewController.m */; };
+		E646640B1527A09F0002FD14 /* GLKitSampler_CoreData_Model.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E646640A1527A09F0002FD14 /* GLKitSampler_CoreData_Model.sqlite */; };
 		E660B50A14FC147A008E50EB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E660B50314FC147A008E50EB /* Default@2x.png */; };
 		E6781D071523E8A100A0CDF6 /* MoonMap_2500x1250.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E6781D061523E8A100A0CDF6 /* MoonMap_2500x1250.jpg */; };
 		E6781D0A1523EE1300A0CDF6 /* StarryBackgroundCubePanoramic.png in Resources */ = {isa = PBXBuildFile; fileRef = E6781D091523EE1300A0CDF6 /* StarryBackgroundCubePanoramic.png */; };
@@ -61,6 +62,7 @@
 
 /* Begin PBXFileReference section */
 		E6245F44150EBA8500B3ED4B /* PFGLKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGLKViewController.m; sourceTree = "<group>"; };
+		E646640A1527A09F0002FD14 /* GLKitSampler_CoreData_Model.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = GLKitSampler_CoreData_Model.sqlite; sourceTree = "<group>"; };
 		E660B50314FC147A008E50EB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		E6781D061523E8A100A0CDF6 /* MoonMap_2500x1250.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MoonMap_2500x1250.jpg; sourceTree = "<group>"; };
 		E6781D091523EE1300A0CDF6 /* StarryBackgroundCubePanoramic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarryBackgroundCubePanoramic.png; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 		E690067C14F5A79800F39AD1 /* GLKitSampler */ = {
 			isa = PBXGroup;
 			children = (
+				E646640A1527A09F0002FD14 /* GLKitSampler_CoreData_Model.sqlite */,
 				E61E43C315007E00008966EA /* Artwork */,
 				E69A099A14F9BC3B00816ABF /* GLKitSampler_CoreData_Model.xcdatamodeld */,
 				E690068814F5A79800F39AD1 /* MainStoryboard_iPhone.storyboard */,
@@ -351,6 +354,7 @@
 				E6781D241524059B00A0CDF6 /* Stars3.png in Resources */,
 				E6781D26152405F000A0CDF6 /* HubblePanoramic_512_2.png in Resources */,
 				E6781D281524075D00A0CDF6 /* Stars_Square.png in Resources */,
+				E646640B1527A09F0002FD14 /* GLKitSampler_CoreData_Model.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
