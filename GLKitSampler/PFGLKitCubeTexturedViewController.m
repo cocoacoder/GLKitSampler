@@ -46,7 +46,7 @@ enum
 // four bytes per coordinate
 // six vertices per face
 // six faces per cube
-
+/*
  GLfloat gCubeTexturedVertexData[(3 + 3 + 2)* 4 * 6 * 6] =
  {
      // Data layout for each line below is:
@@ -100,6 +100,149 @@ enum
      -0.5f, -0.5f, -0.5f,        0.0f, 0.0f, -1.0f,       0.0, 0.0,
      -0.5f,  0.5f, -0.5f,        0.0f, 0.0f, -1.0f,       0.0, 1.0,
  };
+*/
+
+GLfloat gCubeVertexData[(3 + 3 + 2)* 4 * 6 * 6] =
+{
+    // Data layout for each line below is:
+    // positionX, positionY, positionZ,     normalX, normalY, normalZ,     texCoord0S, texCoord0T
+    0.5f, -0.5f, -0.5f,         
+    0.5f,  0.5f, -0.5f,         
+    0.5f, -0.5f,  0.5f,         
+    0.5f, -0.5f,  0.5f,         
+    0.5f,  0.5f,  0.5f,         
+    0.5f,  0.5f, -0.5f,         
+    
+    0.5f,  0.5f, -0.5f,         
+    -0.5f,  0.5f, -0.5f,        
+    0.5f,  0.5f,  0.5f,         
+    0.5f,  0.5f,  0.5f,         
+    -0.5f,  0.5f, -0.5f,        
+    -0.5f,  0.5f,  0.5f,        
+    
+    -0.5f,  0.5f, -0.5f,        
+    -0.5f, -0.5f, -0.5f,        
+    -0.5f,  0.5f,  0.5f,        
+    -0.5f,  0.5f,  0.5f,        
+    -0.5f, -0.5f, -0.5f,        
+    -0.5f, -0.5f,  0.5f,        
+    
+    -0.5f, -0.5f, -0.5f,        
+    0.5f, -0.5f, -0.5f,         
+    -0.5f, -0.5f,  0.5f,        
+    -0.5f, -0.5f,  0.5f,        
+    0.5f, -0.5f, -0.5f,         
+    0.5f, -0.5f, 0.5f,          
+    
+    //    0.5f, 0.5f, 0.5f,    
+    //    -0.5f, 0.5f, 0.5f,   
+    //    0.5f, -0.5f, 0.5f,   
+    //    0.5f, -0.5f, 0.5f,   
+    //    -0.5f, 0.5f, 0.5f,   
+    //    -0.5f, -0.5f, 0.5f,  
+    
+    0.5f,  0.5f, 0.5f,          
+    -0.5f,  0.5f, 0.5f,         
+    0.5f, -0.5f, 0.5f,          
+    0.5f, -0.5f, 0.5f,          
+    -0.5f,  0.5f, 0.5f,         
+    -0.5f, -0.5f, 0.5f,         
+    
+    0.5f, -0.5f, -0.5f,         
+    -0.5f, -0.5f, -0.5f,        
+    0.5f,  0.5f, -0.5f,         
+    0.5f,  0.5f, -0.5f,         
+    -0.5f, -0.5f, -0.5f,        
+    -0.5f,  0.5f, -0.5f,        
+};
+
+
+GLfloat gCubeNormalData[(3 + 3 + 2) * 4 * 6 * 6] =
+{
+    1.0f, 0.0f, 0.0f,       
+    1.0f, 0.0f, 0.0f,       
+    1.0f, 0.0f, 0.0f,       
+    1.0f, 0.0f, 0.0f,       
+    1.0f, 0.0f, 0.0f,       
+    1.0f, 0.0f, 0.0f,       
+    0.0f, 1.0f, 0.0f,       
+    0.0f, 1.0f, 0.0f,      
+    0.0f, 1.0f, 0.0f,       
+    0.0f, 1.0f, 0.0f,       
+    0.0f, 1.0f, 0.0f,      
+    0.0f, 1.0f, 0.0f,      
+    -1.0f, 0.0f, 0.0f,      
+    -1.0f, 0.0f, 0.0f,      
+    -1.0f, 0.0f, 0.0f,      
+    -1.0f, 0.0f, 0.0f,      
+    -1.0f, 0.0f, 0.0f,      
+    -1.0f, 0.0f, 0.0f,      
+    0.0f, -1.0f, 0.0f,     
+    0.0f, -1.0f, 0.0f,      
+    0.0f, -1.0f, 0.0f,     
+    0.0f, -1.0f, 0.0f,     
+    0.0f, -1.0f, 0.0f,      
+    0.0f, -1.0f, 0.0f,      
+    0.0f, 0.0f, 1.0f,
+    0.0f, 0.0f, 1.0f,
+    0.0f, 0.0f, 1.0f,
+    0.0f, 0.0f, 1.0f,
+    0.0f, 0.0f, 1.0f,
+    0.0f, 0.0f, 1.0f,
+    0.577f, 0.577f, 0.577f, 
+    0.577f, 0.577f, 0.577f,
+    0.577f, 0.577f, 0.577f, 
+    0.577f, 0.577f, 0.577f, 
+    0.577f, 0.577f, 0.577f,
+    0.577f, 0.577f, 0.577f,
+    0.0f, 0.0f, -1.0f,      
+    0.0f, 0.0f, -1.0f,     
+    0.0f, 0.0f, -1.0f,      
+    0.0f, 0.0f, -1.0f,      
+    0.0f, 0.0f, -1.0f,     
+    0.0f, 0.0f, -1.0f,     
+};
+
+
+GLfloat gCubeTextureData[(3 + 3 + 2) * 4 * 6 * 6] = 
+{
+    0.0, 0.0,
+    1.0, 0.0,
+    0.0, 1.0,
+    0.0, 1.0,
+    1.0, 1.0,
+    1.0, 0.0,
+    1.0, 0.0,
+    0.0, 0.0,
+    1.0, 1.0,
+    1.0, 1.0,
+    0.0, 0.0,
+    0.0, 1.0,
+    1.0, 0.0,
+    0.0, 0.0,
+    1.0, 1.0,
+    1.0, 1.0,
+    0.0, 0.0,
+    0.0, 1.0,
+    0.0, 0.0,
+    1.0, 0.0,
+    0.0, 1.0,
+    0.0, 1.0,
+    1.0, 0.0,
+    1.0, 1.0,
+    1.0, 1.0,
+    0.0, 1.0,
+    1.0, 0.0,
+    1.0, 0.0,
+    0.0, 1.0,
+    0.0, 0.0,
+    1.0, 0.0,
+    0.0, 0.0,
+    1.0, 1.0,
+    1.0, 1.0,
+    0.0, 0.0,
+    0.0, 1.0,
+};
  
 
 
@@ -248,14 +391,28 @@ enum
     glGenBuffers(1, &_vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
     
-    glBufferData(GL_ARRAY_BUFFER, sizeof(gCubeTexturedVertexData), gCubeTexturedVertexData, GL_STATIC_DRAW);
+    //glBufferData(GL_ARRAY_BUFFER, sizeof(gCubeTexturedVertexData), gCubeTexturedVertexData, GL_STATIC_DRAW);
+    
+    GLbyte valuesPerCoord = sizeof(gCubeTextureData);
+    
+    // Enable and load the vertex array
+	glEnableClientState(GL_VERTEX_ARRAY);
+	
+    glVertexPointer(3, GL_FLOAT, 0, gCubeVertexData); 
+
+    glEnableClientState(GL_NORMAL_ARRAY);
+    glNormalPointer(GL_FLOAT, 0, gCubeNormalData);
+	
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    glTexCoordPointer(valuesPerCoord, GL_FLOAT, 0, gCubeTextureData);
+
     
     
     //
     // Vertices, Normals, and Textures
     //
     // Vertices
-    glEnableVertexAttribArray(GLKVertexAttribPosition);
+/*    glEnableVertexAttribArray(GLKVertexAttribPosition);
     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 32, BUFFER_OFFSET(0)); // for model and texture
     
     // Normals
@@ -265,7 +422,7 @@ enum
     // Texture
     glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
     glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 32, BUFFER_OFFSET(24)); // for model and texture only
-    
+*/    
     
     glBindVertexArrayOES(0);
     
@@ -428,6 +585,9 @@ enum
     glPointSize(10.0);
     
     glDrawArrays(GL_TRIANGLES, 0, 36); // cube vertex array.
+    
+    //GLuint faces
+    glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT,faces);
 }
 
 

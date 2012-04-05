@@ -261,6 +261,10 @@ enum
     glGenBuffers(1, &_vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
     
+    
+    //
+    // This is where the vertex data is brought into the app!
+    //
     glBufferData(GL_ARRAY_BUFFER, sizeof(sphereVertices), sphereVertices, GL_STATIC_DRAW);
     
     
