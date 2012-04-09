@@ -19,8 +19,8 @@
 // This is for the sphere. This and the sphere generation code will be moved shortly to it's own
 // code.
 //
-#define THETA_STEPS 60
-#define PHI_STEPS	60
+#define THETA_STEPS 40
+#define PHI_STEPS	40
 #define ARRAY_LENGTH ((THETA_STEPS + 1) * (PHI_STEPS + 1))
 #define INDEX_LENGTH (3 * ARRAY_LENGTH)
 

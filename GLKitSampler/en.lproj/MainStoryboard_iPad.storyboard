@@ -569,7 +569,11 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Q84-jf-6Ak" appends="YES" id="Lo1-wy-oq4"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="fbB-Z1-7pq"/>
                     <connections>
@@ -577,6 +581,11 @@
                         <outlet property="rollLabel" destination="Enb-p7-cfJ" id="IOW-zJ-qOf"/>
                     </connections>
                 </viewController>
+                <pinchGestureRecognizer delaysTouchesBegan="YES" delaysTouchesEnded="NO" id="Q84-jf-6Ak">
+                    <connections>
+                        <action selector="handleZoomFromGestureRecognizer:" destination="pV7-4K-ZOH" id="Rep-2o-Zg9"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2073" y="2872"/>
         </scene>
@@ -624,6 +633,7 @@
         <class className="PFGLKitLineSampleViewController" superclassName="GLKViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PFGLKitLineSampleViewController.h"/>
             <relationships>
+                <relationship kind="action" name="handleZoomFromGestureRecognizer:" candidateClass="UIPinchGestureRecognizer"/>
                 <relationship kind="action" name="resetReferenceFrame:"/>
                 <relationship kind="outlet" name="pitchLabel" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="rollLabel" candidateClass="UITextField"/>
