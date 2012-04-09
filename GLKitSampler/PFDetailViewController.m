@@ -54,10 +54,22 @@
     
 #pragma mark - Managing the detail item
 
+
 - (void)setDetailItem:(id)newDetailItem
 {
     NSLog(@"DetailView -setDetailItem:");
-    if (_detailItem != newDetailItem) 
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) 
+    {
+        if (_detailItem != newDetailItem) 
+        {
+            _detailItem = newDetailItem;
+            
+            self.title = [self.detailItem description];
+        }
+    }
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
     {
         _detailItem = newDetailItem;
         
@@ -67,17 +79,15 @@
         // Update for the iPad here. That's because the iPad loads in the detail, or second, view
         // at start-up whereas the iPhone does not.
         //
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
+        NSLog(@"DetailView -setDetailItem UIUserInterfaceIdiomPad");
+        [self configureView];
+        
+        
+        if (self.masterPopoverController != nil) 
         {
-            NSLog(@"DetailView -setDetailItem UIUserInterfaceIdiomPad");
-            [self configureView];
-        }
+            [self.masterPopoverController dismissPopoverAnimated:YES];
+        }        
     }
-
-    if (self.masterPopoverController != nil) 
-    {
-        [self.masterPopoverController dismissPopoverAnimated:YES];
-    }        
 }
 
 
@@ -176,16 +186,16 @@
         [self undimOverviewView];
     }
     
-    else if ([[self.detailItem description] isEqualToString:@"Sphere"]) 
+    else if ([[self.detailItem description] isEqualToString:@"TexturedSphere"]) 
     {
-        NSLog(@"DetailView -configureView Set: Sphere");
+        NSLog(@"DetailView -configureView Set: TexturedSphere");
         
         [self undimOverviewView];
     }
     
-    else if ([[self.detailItem description] isEqualToString:@"TexturedSphere"]) 
+    else if ([[self.detailItem description] isEqualToString:@"ISS"]) 
     {
-        NSLog(@"DetailView -configureView Set: Textured Sphere");
+        NSLog(@"DetailView -configureView Set: ISS");
         
         [self undimOverviewView];
     }
@@ -221,14 +231,14 @@
         [self performSegueWithIdentifier:@"GLKViewCubeTexturedSegue" sender:sender];
     }
     
-    else if ([[self.detailItem description] isEqualToString:@"Sphere"]) 
-    {
-        [self performSegueWithIdentifier:@"GLKViewSphereSegue" sender:sender];
-    }
-    
     else if ([[self.detailItem description] isEqualToString:@"TexturedSphere"]) 
     {
         [self performSegueWithIdentifier:@"GLKViewSphereTexturedSegue" sender:sender];
+    }
+    
+    else if ([[self.detailItem description] isEqualToString:@"ISS"]) 
+    {
+        [self performSegueWithIdentifier:@"GLKViewISSSegue" sender:sender];
     }
 }
 

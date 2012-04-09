@@ -8,7 +8,7 @@
 
 #import <GLKit/GLKit.h>
 
-@interface PFGLKitSphereViewController : GLKViewController
+@interface PFGLKitISSViewController : GLKViewController
 
 
 @property (weak, nonatomic) IBOutlet UITextField *pitchLabel;
@@ -16,5 +16,11 @@
 
 
 - (IBAction)resetReferenceFrame:(id)sender;
+
+// Gesture Recognizer Methods
+- (IBAction)handleZoomFromGestureRecognizer:(UIPinchGestureRecognizer *)recognizer;
+
+// Attitude Methods
+- (IBAction)setTranslation:(id)sender;
 
 @end

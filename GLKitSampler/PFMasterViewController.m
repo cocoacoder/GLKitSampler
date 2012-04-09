@@ -93,8 +93,8 @@ static BOOL glkitSampleData = YES; // Toggle this after including data
         [self addGLKitSampleWithName:@"Draw A Square" type:@"Square" summary:@"Draw a square using GL_LINE_LOOP" order:2];
         [self addGLKitSampleWithName:@"Draw A Cube" type:@"Cube" summary:@"Draw a cube using GL_TRIANGLE_STRIP" order:3];
         [self addGLKitSampleWithName:@"Texture A Cube" type:@"TexturedCube" summary:@"Put a little texture on your cube." order:4];
-        [self addGLKitSampleWithName:@"Draw A Sphere" type:@"Sphere" summary:@"Draw a sphere using GL_TRIANGLE_STRIP" order:5];
-        [self addGLKitSampleWithName:@"Texture A Sphere" type:@"TexturedSphere" summary:@"Put a little texture on your sphere." order:6];
+        [self addGLKitSampleWithName:@"A Textured Sphere" type:@"TexturedSphere" summary:@"Draw a sphere using GL_TRIANGLE_STRIP and put a texture on it." order:5];
+        [self addGLKitSampleWithName:@"Import a Model" type:@"ISS" summary:@"Import a model from Blender as a header file, using Jeff Lamarche's Python script." order:6];
         
         NSLog(@"Managed objects created, database populated, and now setting BOOL to TRUE");
         
@@ -288,7 +288,6 @@ static BOOL glkitSampleData = YES; // Toggle this after including data
 
 
 #pragma mark - Core Data Fetched Results Controller Methods
-
 
 - (NSFetchedResultsController *)fetchedResultsController
 {

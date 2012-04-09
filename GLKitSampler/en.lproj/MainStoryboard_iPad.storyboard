@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="5">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -74,8 +74,8 @@
                         <segue destination="5cr-Ku-NPP" kind="push" identifier="GLKViewSquareSegue" id="nTi-dO-ve5"/>
                         <segue destination="l6H-RT-rib" kind="push" identifier="GLKViewCubeSegue" id="iAp-0b-yDn"/>
                         <segue destination="nwM-Xj-3XE" kind="push" identifier="GLKViewCubeTexturedSegue" id="SEY-gB-TwP"/>
-                        <segue destination="fyu-tN-You" kind="push" identifier="GLKViewSphereSegue" id="0x1-Ma-j1x"/>
-                        <segue destination="pV7-4K-ZOH" kind="push" identifier="GLKViewSphereTexturedSegue" id="6Kl-Ey-Cqp"/>
+                        <segue destination="fyu-tN-You" kind="push" identifier="GLKViewSphereTexturedSegue" id="0x1-Ma-j1x"/>
+                        <segue destination="pV7-4K-ZOH" kind="push" identifier="GLKViewISSSegue" id="6Kl-Ey-Cqp"/>
                     </connections>
                 </viewController>
                 <tapGestureRecognizer id="Ysg-Su-YgQ">
@@ -446,11 +446,11 @@
             </objects>
             <point key="canvasLocation" x="2073" y="944"/>
         </scene>
-        <!--Kit Sphere View Controller-->
+        <!--Kit Sphere Textured View Controller-->
         <scene sceneID="0J0-GQ-WTl">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GyL-hF-k7M" sceneMemberID="firstResponder"/>
-                <viewController id="fyu-tN-You" customClass="PFGLKitSphereViewController" sceneMemberID="viewController">
+                <viewController id="fyu-tN-You" customClass="PFGLKitSphereTexturedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wI0-st-BTd" customClass="GLKView">
                         <rect key="frame" x="0.0" y="64" width="703" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -513,11 +513,11 @@
             </objects>
             <point key="canvasLocation" x="2065" y="1904"/>
         </scene>
-        <!--Kit Sphere Textured View Controller-->
+        <!--KitISS View Controller-->
         <scene sceneID="DLd-dv-ChT">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0FP-VT-wUg" sceneMemberID="firstResponder"/>
-                <viewController id="pV7-4K-ZOH" customClass="PFGLKitSphereTexturedViewController" sceneMemberID="viewController">
+                <viewController id="pV7-4K-ZOH" customClass="PFGLKitISSViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zpt-cV-jMP" customClass="GLKView">
                         <rect key="frame" x="0.0" y="64" width="703" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -611,6 +611,16 @@
                 <relationship kind="outlet" name="rollLabel" candidateClass="UITextField"/>
             </relationships>
         </class>
+        <class className="PFGLKitISSViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFGLKitISSViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="handleZoomFromGestureRecognizer:" candidateClass="UIPinchGestureRecognizer"/>
+                <relationship kind="action" name="resetReferenceFrame:"/>
+                <relationship kind="action" name="setTranslation:"/>
+                <relationship kind="outlet" name="pitchLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="rollLabel" candidateClass="UITextField"/>
+            </relationships>
+        </class>
         <class className="PFGLKitLineSampleViewController" superclassName="GLKViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PFGLKitLineSampleViewController.h"/>
             <relationships>
@@ -622,14 +632,7 @@
         <class className="PFGLKitSphereTexturedViewController" superclassName="GLKViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PFGLKitSphereTexturedViewController.h"/>
             <relationships>
-                <relationship kind="action" name="resetReferenceFrame:"/>
-                <relationship kind="outlet" name="pitchLabel" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="rollLabel" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="PFGLKitSphereViewController" superclassName="GLKViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFGLKitSphereViewController.h"/>
-            <relationships>
+                <relationship kind="action" name="handleZoomFromGestureRecognizer:" candidateClass="UIPinchGestureRecognizer"/>
                 <relationship kind="action" name="resetReferenceFrame:"/>
                 <relationship kind="outlet" name="pitchLabel" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="rollLabel" candidateClass="UITextField"/>

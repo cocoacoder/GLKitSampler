@@ -1,52 +1,16 @@
-//If not using MC3D, change 1 to 0 to add needed types
-#if 1
-	#import "MC3DTypes.h"
-#else
-	struct texCoord
-	{
-		GLfloat		u;
-		GLfloat		v;
-	};
-	typedef struct texCoord texCoord;
-	typedef texCoord* texCoordPtr;
-
-	typedef struct vec2 vec2;
-	typedef vec2* vec2Ptr;
-
-	struct vec3
-	{
-		GLfloat x;
-		GLfloat y;
-		GLfloat z;
-	};
-
-	typedef struct vec3 vec3;
-	typedef vec3* vec3Ptr;
-
-	struct vec4
-	{
-		GLfloat x;
-		GLfloat y;
-		GLfloat z;
-		GLfloat w;
-		};
-
-	typedef struct vec4 vec4;
-	typedef vec4* vec4Ptr;
-	
-#endif
+#import <GLKit/GLKit.h>
 
 struct vertexDataTextured
 {
-	vec3		vertex;
-	vec3		normal;
-	texCoord	texCoord;
-}
+	GLKVector3		vertex;
+	GLKVector3		normal;
+	GLKVector2      texCoord;
+};
 typedef struct vertexDataTextured vertexDataTextured;
 typedef vertexDataTextured* vertexDataTexturedPtr;
 
 
-static const vertexDataTextured MeshVertexData[] = {
+static const vertexDataTextured ISS_LowRes_MeshVertexData[] = {
 	{/*v:*/{-0.512792, 0.097013, -0.731850}, /*n:*/{0.577349, -0.577349, -0.577349}, /*t:*/{0.375000, 0.000000}},
 	{/*v:*/{-0.512792, 0.137773, -0.731850}, /*n:*/{0.707083, 0.000000, -0.707083}, /*t:*/{0.500000, 0.000000}},
 	{/*v:*/{-0.512792, 0.137773, -0.503547}, /*n:*/{0.999939, 0.000000, -0.008179}, /*t:*/{0.500000, 0.125000}},

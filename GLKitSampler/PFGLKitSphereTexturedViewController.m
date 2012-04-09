@@ -245,7 +245,7 @@ enum
     GLfloat alpha = 1.0f;
     self.effect.light0.ambientColor = GLKVector4Make(ambientColor, ambientColor, ambientColor, alpha);
     
-    GLfloat diffuseColor    = 0.75f;
+    GLfloat diffuseColor    = 1.0f;
     self.effect.light0.diffuseColor = GLKVector4Make(diffuseColor, diffuseColor, diffuseColor, alpha);
     
     // Spotlight

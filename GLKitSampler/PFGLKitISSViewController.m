@@ -6,9 +6,10 @@
 //  Copyright (c) 2012 CocoaCoder.org. All rights reserved.
 //
 
-#import "PFGLKitSphereViewController.h"
+#import "PFGLKitISSViewController.h"
 
 #import <CoreMotion/CoreMotion.h>
+#import "ISS_LowRes.h"
 
 
 
@@ -49,7 +50,7 @@ enum
 
 
 
-@interface PFGLKitSphereViewController () <UIGestureRecognizerDelegate>
+@interface PFGLKitISSViewController () <UIGestureRecognizerDelegate>
 {
     GLKMatrix4 _modelViewProjectionMatrix;
     GLKMatrix3 _normalMatrix;
@@ -63,25 +64,31 @@ enum
     GLfloat sphereVertices[ARRAY_LENGTH][3];
     GLushort sphereIndices[INDEX_LENGTH];
     int globeMaxIndex;
+    
+    GLfloat distance;
+    GLfloat updater;
 }
 
-@property (strong, nonatomic) EAGLContext *context;
-@property (strong, nonatomic) GLKBaseEffect *effect;
-@property (strong, nonatomic) GLKSkyboxEffect *skybox;
+@property (strong, nonatomic)   EAGLContext *context;
+@property (strong, nonatomic)   GLKBaseEffect *effect;
+@property (strong, nonatomic)   GLKSkyboxEffect *skybox;
 
-@property (strong, nonatomic) CMAttitude *referenceFrame;
+@property (strong, nonatomic)   CMAttitude *referenceFrame;
 
 - (void)createSphere;
 
 - (void)setupGL;
 - (void)tearDownGL;
 
+- (void)thrustImpulse;
+- (void)rotationImpulse;
+
 @end
 
 
 
 
-@implementation PFGLKitSphereViewController
+@implementation PFGLKitISSViewController
 
 
 
@@ -93,6 +100,7 @@ enum
 @synthesize skybox  = _skybox;
 
 @synthesize referenceFrame = _referenceFrame;
+
 
 
 
@@ -113,6 +121,8 @@ enum
     view.context    = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
     
+    distance    = -3.0f;
+    updater     =  0.0f;    
     
     [self setupGL];
 }
@@ -130,6 +140,9 @@ enum
         [EAGLContext setCurrentContext:nil];
     }
 	self.context = nil;
+    
+    distance    = -3.0f;
+    updater     =  0.0f;
 }
 
 
@@ -204,7 +217,7 @@ enum
     [EAGLContext setCurrentContext:self.context];
     
     
-    [self createSphere];
+    //[self createSphere];
     
     glEnable(GL_DEPTH_TEST);
     
@@ -213,21 +226,24 @@ enum
     // Lighting
     //
     self.effect = [[GLKBaseEffect alloc] init];
-    self.effect.light0.enabled  = GL_FALSE;
+    self.effect.light0.enabled  = GL_TRUE;
     
-    GLfloat ambientColor    = 0.20f;
+    GLfloat ambientColor    = 0.90f;
     GLfloat alpha = 1.0f;
     self.effect.light0.ambientColor = GLKVector4Make(ambientColor, ambientColor, ambientColor, alpha);
     
-    GLfloat diffuseColor    = 0.75f;
-    self.effect.light0.diffuseColor = GLKVector4Make(diffuseColor, diffuseColor, diffuseColor, alpha);
+//    GLfloat diffuseColor    = 0.75f;
+    self.effect.light0.diffuseColor = GLKVector4Make(1.0f, 1.0f, 1.0f, alpha);
     
     // Spotlight
-    GLfloat specularColor   = 1.00f;
+    GLfloat specularColor   = 1.0f;
     self.effect.light0.specularColor    = GLKVector4Make(specularColor, specularColor, specularColor, alpha);
-    self.effect.light0.position         = GLKVector4Make(10.0f, 5.0f, 5.0f, 0.0f);
+    self.effect.light0.position         = GLKVector4Make(5.0f, 10.0f, 10.0f, 0.0);
     self.effect.light0.spotDirection    = GLKVector3Make(0.0f, 0.0f, -1.0f);
     self.effect.light0.spotCutoff       = 20.0; // 40° spread total.
+    
+    self.effect.lightingType = GLKLightingTypePerPixel;
+
     
     glGenVertexArraysOES(1, &_vertexArray);
     glBindVertexArrayOES(_vertexArray);
@@ -235,22 +251,55 @@ enum
     glGenBuffers(1, &_vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
     
-    glBufferData(GL_ARRAY_BUFFER, sizeof(sphereVertices), sphereVertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(ISS_LowRes_MeshVertexData), ISS_LowRes_MeshVertexData, GL_STATIC_DRAW);
     
     
     //
     // Vertices
     //
     glEnableVertexAttribArray(GLKVertexAttribPosition);
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 12, BUFFER_OFFSET(0)); // for model, normals, and texture
+    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(vertexDataTextured), 0); // for model, normals, and texture
+    
+    // Normals
+    glEnableVertexAttribArray(GLKVertexAttribNormal);
+    glVertexAttribPointer(GLKVertexAttribNormal, 3, GL_FLOAT, GL_FALSE, sizeof(vertexDataTextured), (char *)12); // for model, normals, and texture
+    
+    // Texture
+    glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
+    glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, sizeof(vertexDataTextured), (char *)24); // for model and texture only
+
     
     glBindVertexArrayOES(0);
+    
+    
+    //
+    // Load the texture for the model
+    //
+    NSDictionary *modelTextureOptions = [NSDictionary dictionaryWithObjectsAndKeys:
+                                         [NSNumber numberWithBool:YES], GLKTextureLoaderOriginBottomLeft, 
+                                         [NSNumber numberWithBool:NO], GLKTextureLoaderGrayscaleAsAlpha, 
+                                         [NSNumber numberWithBool:YES], GLKTextureLoaderApplyPremultiplication,
+                                         [NSNumber numberWithBool:NO], GLKTextureLoaderGenerateMipmaps, nil];    
+    NSString *texturePath       = [[NSBundle mainBundle] pathForResource:@"Brushed_Aluminum_Dark" ofType:@"png"];
+    GLKTextureInfo *textureInfo = [GLKTextureLoader textureWithContentsOfFile:texturePath options:modelTextureOptions error:nil];
+    
+    self.effect.texture2d0.name = textureInfo.name;
+//    self.effect.texture2d0.enabled = TRUE;
+    
+    
+    GLKEffectPropertyTexture *tex = [[GLKEffectPropertyTexture alloc] init];
+ //   tex.enabled = YES;
+    tex.envMode = GLKTextureEnvModeDecal;
+    tex.name = self.effect.texture2d0.name;
+    
+    self.effect.texture2d0.name = tex.name;
+    
         
     
     //
     // Set-up the SkyBox
     //
-    NSString *cubemapTexturePath        = [[NSBundle mainBundle] pathForResource:@"HubblePanoramic_512" ofType:@"png"];
+    NSString *cubemapTexturePath        = [[NSBundle mainBundle] pathForResource:@"Stars" ofType:@"png"];
     GLKTextureInfo *cubemapTextureInfo  = [GLKTextureLoader cubeMapWithContentsOfFile:cubemapTexturePath options:nil error:nil];
     
     self.skybox                     = [[GLKSkyboxEffect alloc] init];
@@ -259,9 +308,9 @@ enum
     self.skybox.textureCubeMap.name = cubemapTextureInfo.name;
     self.skybox.textureCubeMap.enabled = TRUE;
     
-    self.skybox.xSize               = 20.0;
-    self.skybox.ySize               = 20.0;
-    self.skybox.zSize               = 20.0;
+    self.skybox.xSize               = 50.0;
+    self.skybox.ySize               = 50.0;
+    self.skybox.zSize               = 50.0;
     self.skybox.label               = @"Skybox";
     
 
@@ -297,7 +346,7 @@ enum
 - (void)update
 {
     float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
-    GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.1f, 100.0f);
+    GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.1f, 250.0f);
     
     self.effect.transform.projectionMatrix = projectionMatrix;
     self.skybox.transform.projectionMatrix = projectionMatrix;
@@ -307,8 +356,12 @@ enum
     // Rotation then translation. 
     // A Rotation of 180° to place the face of the body, in this case the Moon, correctly.
     //
-    GLKMatrix4 baseModelViewMatrix = GLKMatrix4MakeRotation(M_PI, 0.0f, 1.0f, 0.0f);
-    baseModelViewMatrix = GLKMatrix4Translate(baseModelViewMatrix, 0.0f, 0.0f, 3.0f);
+    GLKMatrix4 baseModelViewMatrix = GLKMatrix4MakeRotation( M_PI_2, 1.0f, 0.0f, 0.0f);
+    baseModelViewMatrix = GLKMatrix4Rotate(baseModelViewMatrix, -M_PI_2, 0.0f, 1.0f, 0.0f);
+    baseModelViewMatrix = GLKMatrix4Translate(baseModelViewMatrix, 0.0f, 2.0f * distance, 0.0f);
+//    baseModelViewMatrix = GLKMatrix4Scale(baseModelViewMatrix, 0.5, 0.5, 0.5);
+    
+    //GLKMatrix4 baseModelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, 2.0 * distance);
     
     
     //
@@ -317,9 +370,13 @@ enum
     if ([_motionMgr isDeviceMotionAvailable]) 
     {
         CMDeviceMotion *motion = [_motionMgr deviceMotion];
-       
-        CMAttitude *attitude = motion.attitude;
         
+        CMAttitude *attitude = motion.attitude;
+         
+        
+        //
+        // This resets the reference frame
+        //
         if (!self.referenceFrame) 
         {
             NSLog(@"reference frame is nil...setting it to the current attitude.");
@@ -348,18 +405,15 @@ enum
         
         
         //
-        // Update yaw, pitch, and roll labels
+        // Update pitch, and roll labels
         //
         [self.pitchLabel setText:[NSString stringWithFormat:@"%6.2f""°", GLKMathRadiansToDegrees(pitchAngle)]];            
         [self.rollLabel setText:[NSString stringWithFormat:@"%6.2f""°", GLKMathRadiansToDegrees(rollAngle)]];        
-        
     }
     else
     {
-        baseModelViewMatrix = GLKMatrix4Rotate(baseModelViewMatrix, _rotation / 4.0, 0.0f, 1.0f, 0.0f);
-
         // Compute the model view matrix for the object rendered with GLKit
-        GLKMatrix4 modelViewMatrix = GLKMatrix4MakeRotation(_rotation, 1.0f, 1.0f, 1.0f);
+        GLKMatrix4 modelViewMatrix = GLKMatrix4MakeRotation(_rotation / 4.0, 0.1f, 1.0f, 0.0f);
         modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix, modelViewMatrix);
         
         self.effect.transform.modelviewMatrix = modelViewMatrix;
@@ -382,7 +436,8 @@ enum
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
-    glClearColor(0.16f, 0.32f, 0.65f, 1.0f);
+//    glClearColor(0.16f, 0.32f, 0.65f, 1.0f);
+    glClearColor(0.65f, 0.65f, 0.65f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     // Render the skybox
@@ -397,7 +452,7 @@ enum
     glPointSize(10.0);
     
     // Need to create an indices array.
-    glDrawElements(GL_TRIANGLE_STRIP, globeMaxIndex, GL_UNSIGNED_SHORT, sphereIndices);
+    glDrawArrays(GL_TRIANGLES, 0, sizeof(ISS_LowRes_MeshVertexData)/ sizeof(vertexDataTextured));
     
 }
 
@@ -410,6 +465,43 @@ enum
     if ([_motionMgr isDeviceMotionActive]) 
     {
         self.referenceFrame = [[_motionMgr deviceMotion] attitude];
+    }
+}
+
+
+
+-(void)handleZoomFromGestureRecognizer:(UIPinchGestureRecognizer *)recognizer
+{
+    NSLog(@"Pinch Gesture Recognizer");
+    
+    //
+    // This sets the spacing between layers.
+    //
+    updater = [recognizer scale];
+    
+    NSLog(@"Updater: %f", updater);
+    
+    if ([recognizer state] == UIGestureRecognizerStateChanged) 
+    {
+        if ( updater > 1.0 ) 
+        {
+            // Zoom-in
+            if ( distance >= 1.25f ) 
+            {
+                distance -= updater / 60.0f;
+            }
+        }
+        else
+        {
+            if ( distance <= 6.0 ) 
+            {
+                distance += updater / 10.f;
+            }
+            if ( distance > 6.0 ) 
+            {
+                distance = 6.0;
+            }
+        }
     }
 }
 

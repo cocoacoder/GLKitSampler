@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -132,8 +132,8 @@
                         <segue destination="Sto-5O-7JP" kind="push" identifier="GLKViewSquareSegue" id="Y6E-NL-FId"/>
                         <segue destination="uPC-df-UCi" kind="push" identifier="GLKViewLineSegue" id="oYl-u8-h3N"/>
                         <segue destination="J6Q-t3-txe" kind="push" identifier="GLKViewCubeTexturedSegue" id="DWr-su-IeJ"/>
-                        <segue destination="wc0-Q9-ea7" kind="push" identifier="GLKViewSphereSegue" id="A7d-hh-5vW"/>
-                        <segue destination="gmt-6q-GOA" kind="push" identifier="GLKViewSphereTexturedSegue" id="2xW-km-0uu"/>
+                        <segue destination="wc0-Q9-ea7" kind="push" identifier="GLKViewSphereTexturedSegue" id="A7d-hh-5vW"/>
+                        <segue destination="gmt-6q-GOA" kind="push" identifier="GLKViewISSSegue" id="2xW-km-0uu"/>
                     </connections>
                 </viewController>
                 <tapGestureRecognizer id="L1W-gF-egP">
@@ -408,11 +408,11 @@
             </objects>
             <point key="canvasLocation" x="3083" y="662"/>
         </scene>
-        <!--Kit Sphere View Controller-->
+        <!--Kit Sphere Textured View Controller-->
         <scene sceneID="UkO-4N-8cR">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xyR-rm-BMB" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="" id="wc0-Q9-ea7" customClass="PFGLKitSphereViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="" id="wc0-Q9-ea7" customClass="PFGLKitSphereTexturedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VpA-yr-4Ny" customClass="GLKView">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -474,11 +474,11 @@
             </objects>
             <point key="canvasLocation" x="3083" y="1268"/>
         </scene>
-        <!--Kit Sphere Textured View Controller-->
+        <!--KitISS View Controller-->
         <scene sceneID="Cbk-qf-tLV">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GpB-vv-LJe" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="" id="gmt-6q-GOA" customClass="PFGLKitSphereTexturedViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="" id="gmt-6q-GOA" customClass="PFGLKitISSViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t0u-OP-T75" customClass="GLKView">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -553,6 +553,84 @@
     <resources>
         <image name="Reset Red Image.tiff" width="200" height="80"/>
     </resources>
+    <classes>
+        <class className="PFDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="glViewTransition:"/>
+                <relationship kind="outlet" name="overviewLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="overviewView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="textOverviewTextView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="PFGLKitCubeSampleViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFGLKitCubeSampleViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resetReferenceFrame:"/>
+                <relationship kind="outlet" name="pitchLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="rollLabel" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PFGLKitCubeTexturedViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFGLKitCubeTexturedViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resetReferenceFrame:"/>
+                <relationship kind="outlet" name="pitchLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="rollLabel" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PFGLKitISSViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFGLKitISSViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="handleZoomFromGestureRecognizer:" candidateClass="UIPinchGestureRecognizer"/>
+                <relationship kind="action" name="resetReferenceFrame:"/>
+                <relationship kind="action" name="setTranslation:"/>
+                <relationship kind="outlet" name="pitchLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="rollLabel" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PFGLKitLineSampleViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFGLKitLineSampleViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resetReferenceFrame:"/>
+                <relationship kind="outlet" name="pitchLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="rollLabel" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PFGLKitSphereTexturedViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFGLKitSphereTexturedViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="handleZoomFromGestureRecognizer:" candidateClass="UIPinchGestureRecognizer"/>
+                <relationship kind="action" name="resetReferenceFrame:"/>
+                <relationship kind="outlet" name="pitchLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="rollLabel" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PFGLKitSquareSampleViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFGLKitSquareSampleViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resetReferenceFrame:"/>
+                <relationship kind="outlet" name="pitchLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="rollLabel" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PFMasterViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFMasterViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cellBackgroundView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="summaryLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PFTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cellBackgroundView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="summaryLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
