@@ -168,6 +168,24 @@
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"GLKitSampler_CoreData_Model.sqlite"];
     
+    
+#define MISSION_COPY_STORE_FROM_BUNDLE
+    
+#ifdef MISSION_COPY_STORE_FROM_BUNDLE
+    if ( ![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]]) 
+    {
+        NSString *dataPath = [[NSBundle mainBundle] pathForResource:@"GLKitSampler_CoreData_Model" ofType:@"sqlite"];
+        
+        NSError *anyError = nil;
+        BOOL success = [[NSFileManager defaultManager] copyItemAtPath:dataPath toPath:[storeURL path] error:&anyError];
+        
+        if ( !success ) 
+        {
+            NSLog(@"Error copying file: %@", anyError);
+        }
+    }
+#endif
+    
     NSError *error = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) 

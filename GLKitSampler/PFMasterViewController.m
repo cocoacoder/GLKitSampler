@@ -80,8 +80,8 @@ static BOOL glkitSampleData = YES; // Toggle this after including data
     }
     
     self.navigationController.navigationBar.tintColor   = [UIColor blackColor];
-    self.navigationController.navigationBar.alpha       = 0.75;
-    self.navigationController.navigationBar.translucent = YES;
+//    self.navigationController.navigationBar.alpha       = 0.75;
+//    self.navigationController.navigationBar.translucent = YES;
     
 
     //
@@ -113,15 +113,18 @@ static BOOL glkitSampleData = YES; // Toggle this after including data
     // Release any retained subviews of the main view.
 }
 
+
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+    // Return YES for supported orientations
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) 
     {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
     } 
     else 
     {
-        return YES;
+        return ( (interfaceOrientation == UIInterfaceOrientationPortrait) || (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown));
     }
 }
 

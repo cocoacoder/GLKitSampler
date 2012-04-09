@@ -201,10 +201,11 @@ GLfloat gCubeTexturedVertexData[(3 + 3 + 2)* 4 * 6 * 6] =
     // Return YES for supported orientations
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) 
     {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else 
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    } 
+    else 
     {
-        return YES;
+        return ( (interfaceOrientation == UIInterfaceOrientationPortrait) || (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown));
     }
 }
 
@@ -230,17 +231,21 @@ GLfloat gCubeTexturedVertexData[(3 + 3 + 2)* 4 * 6 * 6] =
     //
     self.effect = [[GLKBaseEffect alloc] init];
     
-    self.effect.light0.enabled  = GL_TRUE;
+    self.effect.light0.enabled  = GL_TRUE;    
     
-    self.effect.light0.diffuseColor = GLKVector4Make(1.0f, 1.0f, 1.0f, 1.0f);
-    
-    GLfloat ambientColor    = 0.20f;
-    GLfloat alpha           = 1.0f;
+    GLfloat ambientColor    = 0.70f;
+    GLfloat alpha = 1.0f;
     self.effect.light0.ambientColor = GLKVector4Make(ambientColor, ambientColor, ambientColor, alpha);
     
-    GLfloat diffuseColor    = 0.5f;
+    GLfloat diffuseColor    = 1.0f;
     self.effect.light0.diffuseColor = GLKVector4Make(diffuseColor, diffuseColor, diffuseColor, alpha);
     
+    // Spotlight
+    GLfloat specularColor   = 1.00f;
+    self.effect.light0.specularColor    = GLKVector4Make(specularColor, specularColor, specularColor, alpha);
+    self.effect.light0.position         = GLKVector4Make(10.0f, 5.0f, 5.0f, 0.0f);
+    self.effect.light0.spotDirection    = GLKVector3Make(0.0f, 0.0f, -1.0f);
+    self.effect.light0.spotCutoff       = 20.0; // 40° spread total.    
     
     glGenVertexArraysOES(1, &_vertexArray);
     glBindVertexArrayOES(_vertexArray);
@@ -283,7 +288,7 @@ GLfloat gCubeTexturedVertexData[(3 + 3 + 2)* 4 * 6 * 6] =
     //
     // Set-up the SkyBox
     //
-    NSString *cubemapTexturePath        = [[NSBundle mainBundle] pathForResource:@"HubblePanoramic_512" ofType:@"png"];
+    NSString *cubemapTexturePath        = [[NSBundle mainBundle] pathForResource:@"Stars" ofType:@"png"];
     GLKTextureInfo *cubemapTextureInfo  = [GLKTextureLoader cubeMapWithContentsOfFile:cubemapTexturePath options:nil error:nil];
     
     self.skybox                     = [[GLKSkyboxEffect alloc] init];

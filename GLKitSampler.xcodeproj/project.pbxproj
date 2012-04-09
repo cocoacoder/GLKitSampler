@@ -10,19 +10,9 @@
 		E6245F45150EBA8500B3ED4B /* PFGLKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6245F44150EBA8500B3ED4B /* PFGLKViewController.m */; };
 		E62FC29A1531751900854854 /* Brushed_Aluminum.png in Resources */ = {isa = PBXBuildFile; fileRef = E62FC2991531751900854854 /* Brushed_Aluminum.png */; };
 		E62FC2A0153177AC00854854 /* Brushed_Aluminum_Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = E62FC29F153177AC00854854 /* Brushed_Aluminum_Dark.png */; };
-		E646640B1527A09F0002FD14 /* GLKitSampler_CoreData_Model.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E646640A1527A09F0002FD14 /* GLKitSampler_CoreData_Model.sqlite */; };
 		E660B50A14FC147A008E50EB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E660B50314FC147A008E50EB /* Default@2x.png */; };
 		E6781D071523E8A100A0CDF6 /* MoonMap_2500x1250.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E6781D061523E8A100A0CDF6 /* MoonMap_2500x1250.jpg */; };
-		E6781D0A1523EE1300A0CDF6 /* StarryBackgroundCubePanoramic.png in Resources */ = {isa = PBXBuildFile; fileRef = E6781D091523EE1300A0CDF6 /* StarryBackgroundCubePanoramic.png */; };
-		E6781D0C1523EF3500A0CDF6 /* cube_faces_large.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E6781D0B1523EF3500A0CDF6 /* cube_faces_large.jpg */; };
-		E6781D0E1523F99300A0CDF6 /* StarryBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E6781D0D1523F99300A0CDF6 /* StarryBackground.png */; };
 		E6781D1C1523FF3400A0CDF6 /* Stars.png in Resources */ = {isa = PBXBuildFile; fileRef = E6781D1B1523FF3400A0CDF6 /* Stars.png */; };
-		E6781D1E1523FF7700A0CDF6 /* Stars_Small.png in Resources */ = {isa = PBXBuildFile; fileRef = E6781D1D1523FF7700A0CDF6 /* Stars_Small.png */; };
-		E6781D201523FFD500A0CDF6 /* Stars_Silly.png in Resources */ = {isa = PBXBuildFile; fileRef = E6781D1F1523FFD500A0CDF6 /* Stars_Silly.png */; };
-		E6781D221524030200A0CDF6 /* Stars_Silly_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E6781D211524030200A0CDF6 /* Stars_Silly_2.jpg */; };
-		E6781D241524059B00A0CDF6 /* Stars3.png in Resources */ = {isa = PBXBuildFile; fileRef = E6781D231524059A00A0CDF6 /* Stars3.png */; };
-		E6781D26152405F000A0CDF6 /* HubblePanoramic_512_2.png in Resources */ = {isa = PBXBuildFile; fileRef = E6781D25152405F000A0CDF6 /* HubblePanoramic_512_2.png */; };
-		E6781D281524075D00A0CDF6 /* Stars_Square.png in Resources */ = {isa = PBXBuildFile; fileRef = E6781D271524075D00A0CDF6 /* Stars_Square.png */; };
 		E67CC6D515129C5500E9E093 /* PFGLKitCubeTexturedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E67CC6D415129C5400E9E093 /* PFGLKitCubeTexturedViewController.m */; };
 		E67CC6D81512B5D500E9E093 /* Steve_Icon_Image.png in Resources */ = {isa = PBXBuildFile; fileRef = E67CC6D71512B5D500E9E093 /* Steve_Icon_Image.png */; };
 		E67CC6DC1512FB9300E9E093 /* Reset Red Image.tiff in Resources */ = {isa = PBXBuildFile; fileRef = E67CC6DB1512FB9300E9E093 /* Reset Red Image.tiff */; };
@@ -45,7 +35,6 @@
 		E69006A414F5C47900F39AD1 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E69006A014F5C47900F39AD1 /* GLKit.framework */; };
 		E69006A514F5C47900F39AD1 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E69006A114F5C47900F39AD1 /* OpenGLES.framework */; };
 		E69006A614F5C47900F39AD1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E69006A214F5C47900F39AD1 /* QuartzCore.framework */; };
-		E69A094914F670DB00816ABF /* HubblePanoramic_512.png in Resources */ = {isa = PBXBuildFile; fileRef = E69A094714F670DB00816ABF /* HubblePanoramic_512.png */; };
 		E69A094A14F670DB00816ABF /* Moon_Colored_2048.png in Resources */ = {isa = PBXBuildFile; fileRef = E69A094814F670DB00816ABF /* Moon_Colored_2048.png */; };
 		E69A099414F8B53900816ABF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E69A099314F8B53800816ABF /* CoreData.framework */; };
 		E69A099C14F9BC3B00816ABF /* GLKitSampler_CoreData_Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E69A099A14F9BC3B00816ABF /* GLKitSampler_CoreData_Model.xcdatamodeld */; };
@@ -60,26 +49,17 @@
 		E6C77C951500843600A94053 /* PFGLKitSquareSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C77C941500843600A94053 /* PFGLKitSquareSampleViewController.m */; };
 		E6C77C981500E02300A94053 /* PFGLKitCubeSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C77C971500E02300A94053 /* PFGLKitCubeSampleViewController.m */; };
 		E6F21C5D14FB446800DBFE9C /* PFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F21C5C14FB446800DBFE9C /* PFTableViewCell.m */; };
+		E6F9BA0E1532DD8300EB0E89 /* GLKitSampler_CoreData_Model.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E6F9BA0D1532DD8300EB0E89 /* GLKitSampler_CoreData_Model.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E6245F44150EBA8500B3ED4B /* PFGLKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGLKViewController.m; sourceTree = "<group>"; };
-		E62FC29315315C4200854854 /* ISS_LowRes.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ISS_LowRes.h; sourceTree = "<group>"; };
+		E62FC29315315C4200854854 /* ISS_LowRes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISS_LowRes.h; sourceTree = "<group>"; };
 		E62FC2991531751900854854 /* Brushed_Aluminum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Brushed_Aluminum.png; sourceTree = "<group>"; };
 		E62FC29F153177AC00854854 /* Brushed_Aluminum_Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Brushed_Aluminum_Dark.png; sourceTree = "<group>"; };
-		E646640A1527A09F0002FD14 /* GLKitSampler_CoreData_Model.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = GLKitSampler_CoreData_Model.sqlite; sourceTree = "<group>"; };
 		E660B50314FC147A008E50EB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		E6781D061523E8A100A0CDF6 /* MoonMap_2500x1250.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MoonMap_2500x1250.jpg; sourceTree = "<group>"; };
-		E6781D091523EE1300A0CDF6 /* StarryBackgroundCubePanoramic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarryBackgroundCubePanoramic.png; sourceTree = "<group>"; };
-		E6781D0B1523EF3500A0CDF6 /* cube_faces_large.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cube_faces_large.jpg; sourceTree = "<group>"; };
-		E6781D0D1523F99300A0CDF6 /* StarryBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarryBackground.png; sourceTree = "<group>"; };
 		E6781D1B1523FF3400A0CDF6 /* Stars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stars.png; sourceTree = "<group>"; };
-		E6781D1D1523FF7700A0CDF6 /* Stars_Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stars_Small.png; sourceTree = "<group>"; };
-		E6781D1F1523FFD500A0CDF6 /* Stars_Silly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stars_Silly.png; sourceTree = "<group>"; };
-		E6781D211524030200A0CDF6 /* Stars_Silly_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Stars_Silly_2.jpg; sourceTree = "<group>"; };
-		E6781D231524059A00A0CDF6 /* Stars3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stars3.png; sourceTree = "<group>"; };
-		E6781D25152405F000A0CDF6 /* HubblePanoramic_512_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HubblePanoramic_512_2.png; sourceTree = "<group>"; };
-		E6781D271524075D00A0CDF6 /* Stars_Square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stars_Square.png; sourceTree = "<group>"; };
 		E67CC6D315129C5400E9E093 /* PFGLKitCubeTexturedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGLKitCubeTexturedViewController.h; sourceTree = "<group>"; };
 		E67CC6D415129C5400E9E093 /* PFGLKitCubeTexturedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGLKitCubeTexturedViewController.m; sourceTree = "<group>"; };
 		E67CC6D71512B5D500E9E093 /* Steve_Icon_Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Steve_Icon_Image.png; sourceTree = "<group>"; };
@@ -111,7 +91,6 @@
 		E69006A014F5C47900F39AD1 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		E69006A114F5C47900F39AD1 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		E69006A214F5C47900F39AD1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		E69A094714F670DB00816ABF /* HubblePanoramic_512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HubblePanoramic_512.png; sourceTree = "<group>"; };
 		E69A094814F670DB00816ABF /* Moon_Colored_2048.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Moon_Colored_2048.png; sourceTree = "<group>"; };
 		E69A099314F8B53800816ABF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E69A099B14F9BC3B00816ABF /* GLKitSampler_CoreData_Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GLKitSampler_CoreData_Model.xcdatamodel; sourceTree = "<group>"; };
@@ -131,6 +110,7 @@
 		E6C77CDD150EB38200A94053 /* PFGLKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGLKViewController.h; sourceTree = "<group>"; };
 		E6F21C5B14FB446800DBFE9C /* PFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTableViewCell.h; sourceTree = "<group>"; };
 		E6F21C5C14FB446800DBFE9C /* PFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTableViewCell.m; sourceTree = "<group>"; };
+		E6F9BA0D1532DD8300EB0E89 /* GLKitSampler_CoreData_Model.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = GLKitSampler_CoreData_Model.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,20 +138,10 @@
 				E62FC29F153177AC00854854 /* Brushed_Aluminum_Dark.png */,
 				E62FC2991531751900854854 /* Brushed_Aluminum.png */,
 				E62FC29315315C4200854854 /* ISS_LowRes.h */,
-				E6781D271524075D00A0CDF6 /* Stars_Square.png */,
-				E6781D25152405F000A0CDF6 /* HubblePanoramic_512_2.png */,
-				E6781D231524059A00A0CDF6 /* Stars3.png */,
-				E6781D211524030200A0CDF6 /* Stars_Silly_2.jpg */,
-				E6781D1F1523FFD500A0CDF6 /* Stars_Silly.png */,
-				E6781D1D1523FF7700A0CDF6 /* Stars_Small.png */,
 				E6781D1B1523FF3400A0CDF6 /* Stars.png */,
-				E6781D0D1523F99300A0CDF6 /* StarryBackground.png */,
-				E6781D0B1523EF3500A0CDF6 /* cube_faces_large.jpg */,
-				E6781D091523EE1300A0CDF6 /* StarryBackgroundCubePanoramic.png */,
 				E6781D061523E8A100A0CDF6 /* MoonMap_2500x1250.jpg */,
 				E67CC6D71512B5D500E9E093 /* Steve_Icon_Image.png */,
 				E67CC6DB1512FB9300E9E093 /* Reset Red Image.tiff */,
-				E69A094714F670DB00816ABF /* HubblePanoramic_512.png */,
 				E660B50314FC147A008E50EB /* Default@2x.png */,
 				E69A094814F670DB00816ABF /* Moon_Colored_2048.png */,
 				E6A4C27014F5F53000AF3126 /* White_Background.png */,
@@ -252,7 +222,7 @@
 		E690067C14F5A79800F39AD1 /* GLKitSampler */ = {
 			isa = PBXGroup;
 			children = (
-				E646640A1527A09F0002FD14 /* GLKitSampler_CoreData_Model.sqlite */,
+				E6F9BA0D1532DD8300EB0E89 /* GLKitSampler_CoreData_Model.sqlite */,
 				E61E43C315007E00008966EA /* Artwork */,
 				E69A099A14F9BC3B00816ABF /* GLKitSampler_CoreData_Model.xcdatamodeld */,
 				E690068814F5A79800F39AD1 /* MainStoryboard_iPhone.storyboard */,
@@ -339,7 +309,6 @@
 				E690068D14F5A79800F39AD1 /* MainStoryboard_iPad.storyboard in Resources */,
 				E690069E14F5AD2C00F39AD1 /* Star_Nursery.png in Resources */,
 				E6A4C27114F5F53000AF3126 /* White_Background.png in Resources */,
-				E69A094914F670DB00816ABF /* HubblePanoramic_512.png in Resources */,
 				E69A094A14F670DB00816ABF /* Moon_Colored_2048.png in Resources */,
 				E660B50A14FC147A008E50EB /* Default@2x.png in Resources */,
 				E6C77C881500834D00A94053 /* LunarLanderIcon.png in Resources */,
@@ -352,19 +321,10 @@
 				E67CC6DC1512FB9300E9E093 /* Reset Red Image.tiff in Resources */,
 				E67CC6E11513006500E9E093 /* PFGLKitSphereTexturedViewController.h in Resources */,
 				E6781D071523E8A100A0CDF6 /* MoonMap_2500x1250.jpg in Resources */,
-				E6781D0A1523EE1300A0CDF6 /* StarryBackgroundCubePanoramic.png in Resources */,
-				E6781D0C1523EF3500A0CDF6 /* cube_faces_large.jpg in Resources */,
-				E6781D0E1523F99300A0CDF6 /* StarryBackground.png in Resources */,
 				E6781D1C1523FF3400A0CDF6 /* Stars.png in Resources */,
-				E6781D1E1523FF7700A0CDF6 /* Stars_Small.png in Resources */,
-				E6781D201523FFD500A0CDF6 /* Stars_Silly.png in Resources */,
-				E6781D221524030200A0CDF6 /* Stars_Silly_2.jpg in Resources */,
-				E6781D241524059B00A0CDF6 /* Stars3.png in Resources */,
-				E6781D26152405F000A0CDF6 /* HubblePanoramic_512_2.png in Resources */,
-				E6781D281524075D00A0CDF6 /* Stars_Square.png in Resources */,
-				E646640B1527A09F0002FD14 /* GLKitSampler_CoreData_Model.sqlite in Resources */,
 				E62FC29A1531751900854854 /* Brushed_Aluminum.png in Resources */,
 				E62FC2A0153177AC00854854 /* Brushed_Aluminum_Dark.png in Resources */,
+				E6F9BA0E1532DD8300EB0E89 /* GLKitSampler_CoreData_Model.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

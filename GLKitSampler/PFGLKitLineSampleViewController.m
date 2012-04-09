@@ -148,10 +148,11 @@ GLfloat gLineVertexData[(3) * 4] =
     // Return YES for supported orientations
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) 
     {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else 
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    } 
+    else 
     {
-        return YES;
+        return ( (interfaceOrientation == UIInterfaceOrientationPortrait) || (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown));
     }
 }
 
@@ -193,7 +194,7 @@ GLfloat gLineVertexData[(3) * 4] =
     //
     // Set-up the SkyBox
     //
-    NSString *cubemapTexturePath        = [[NSBundle mainBundle] pathForResource:@"HubblePanoramic_512" ofType:@"png"];
+    NSString *cubemapTexturePath        = [[NSBundle mainBundle] pathForResource:@"Stars" ofType:@"png"];
     GLKTextureInfo *cubemapTextureInfo  = [GLKTextureLoader cubeMapWithContentsOfFile:cubemapTexturePath options:nil error:nil];
     
     self.skybox                     = [[GLKSkyboxEffect alloc] init];

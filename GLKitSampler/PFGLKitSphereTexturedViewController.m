@@ -157,10 +157,11 @@ enum
     // Return YES for supported orientations
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) 
     {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else 
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    } 
+    else 
     {
-        return YES;
+        return ( (interfaceOrientation == UIInterfaceOrientationPortrait) || (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown));
     }
 }
 
