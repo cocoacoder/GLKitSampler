@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
@@ -464,6 +464,10 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="jBN-70-3Vd" appends="YES" id="c7F-gr-YP3"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="qCL-Bs-Sls"/>
                     <connections>
@@ -471,6 +475,11 @@
                         <outlet property="rollLabel" destination="rMS-97-0it" id="4hH-ao-jfc"/>
                     </connections>
                 </viewController>
+                <pinchGestureRecognizer id="jBN-70-3Vd">
+                    <connections>
+                        <action selector="handleZoomFromGestureRecognizer:" destination="wc0-Q9-ea7" id="0Ek-Ij-HFd"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3083" y="1268"/>
         </scene>

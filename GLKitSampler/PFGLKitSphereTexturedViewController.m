@@ -118,7 +118,7 @@ enum
     view.context    = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
     
-    distance    = -3.0f;
+    distance    =  3.0f;
     updater     =  0.0f;    
     
     [self setupGL];
@@ -371,10 +371,10 @@ enum
     // Rotation then translation. 
     // A Rotation of 180° to place the face of the body, in this case the Moon, correctly.
     //
-    //GLKMatrix4 baseModelViewMatrix = GLKMatrix4MakeRotation(M_PI, 0.0f, 1.0f, 0.0f);
-    //baseModelViewMatrix = GLKMatrix4Translate(baseModelViewMatrix, 0.0f, 0.0f, distance);
+    GLKMatrix4 baseModelViewMatrix = GLKMatrix4MakeRotation(M_PI, 0.0f, 1.0f, 0.0f);
+    baseModelViewMatrix = GLKMatrix4Translate(baseModelViewMatrix, 0.0f, 0.0f, distance);
     
-    GLKMatrix4 baseModelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, distance);
+    //GLKMatrix4 baseModelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, distance);
     
     
     //
