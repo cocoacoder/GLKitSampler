@@ -7,7 +7,7 @@ struct vertexDataTextured
 	GLKVector2      texCoord;
 };
 typedef struct vertexDataTextured vertexDataTextured;
-typedef vertexDataTextured* vertexDataTexturedPtr;
+//typedef vertexDataTextured* vertexDataTexturedPtr;
 
 
 static const vertexDataTextured ISS_LowRes_MeshVertexData[] = {

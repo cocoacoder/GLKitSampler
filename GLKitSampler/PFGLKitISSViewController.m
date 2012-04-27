@@ -50,6 +50,11 @@ enum
 
 
 
+static BOOL readModel = NO;
+
+
+
+
 @interface PFGLKitISSViewController () <UIGestureRecognizerDelegate>
 {
     GLKMatrix4 _modelViewProjectionMatrix;
@@ -74,6 +79,8 @@ enum
 @property (strong, nonatomic)   GLKSkyboxEffect *skybox;
 
 @property (strong, nonatomic)   CMAttitude *referenceFrame;
+
+@property (strong,nonatomic) NSData *meshData;
 
 - (void)createSphere;
 
@@ -100,6 +107,8 @@ enum
 @synthesize skybox  = _skybox;
 
 @synthesize referenceFrame = _referenceFrame;
+
+@synthesize meshData = _meshData;
 
 
 
@@ -223,6 +232,46 @@ enum
     glEnable(GL_DEPTH_TEST);
     
     
+    
+    //
+    // NSDATA READ-IN
+    //
+    // This is to test whether an NSData object can be used as a storage for large static arrays
+    //
+    // NOTE:
+    //
+    // I want to thank Jason Moore and Duane Cawthron for their help in both writing code and opening
+    // my eyes to working with NSData. Thank you guys.
+    //
+    
+    if (readModel) 
+    {
+        // Compliments of Jason Moore
+        NSData *copyMeshArrayData = [NSData dataWithBytesNoCopy:(void *)ISS_LowRes_MeshVertexData length:sizeof(ISS_LowRes_MeshVertexData)];
+        
+        [copyMeshArrayData writeToFile:[[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"ISS_LowRes.bytes"]
+                            atomically:NO];
+        
+        NSLog(@"size of array: %lu", sizeof(ISS_LowRes_MeshVertexData));
+        NSLog(@"length of NSData: %d", [copyMeshArrayData length]);
+    }
+    
+    
+    //
+    // NSDATA READ-OUT
+    //
+    // Create a path to the file of bytes and associate an NSData object with that file.
+    //
+    
+    // Compliments of Jason Moore
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"ISS_LowRes" ofType:@"bytes"];
+    NSData *meshArrayData = [NSData dataWithContentsOfFile:path];
+    self.meshData = meshArrayData;
+    
+    //NSLog(@"size of array: %lu", sizeof(ISS_LowRes_MeshVertexData));
+    //NSLog(@"length of NSData: %d", [meshArrayData length]);
+    
+    
     //
     // Lighting
     //
@@ -252,9 +301,9 @@ enum
     glGenBuffers(1, &_vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
     
-    glBufferData(GL_ARRAY_BUFFER, sizeof(ISS_LowRes_MeshVertexData), ISS_LowRes_MeshVertexData, GL_STATIC_DRAW);
-    
-    
+    //glBufferData(GL_ARRAY_BUFFER, sizeof(ISS_LowRes_MeshVertexData), ISS_LowRes_MeshVertexData, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, [self.meshData length], [self.meshData bytes], GL_STATIC_DRAW);
+
     //
     // Vertices
     //
@@ -453,8 +502,9 @@ enum
     glPointSize(10.0);
     
     // Need to create an indices array.
-    glDrawArrays(GL_TRIANGLES, 0, sizeof(ISS_LowRes_MeshVertexData)/ sizeof(vertexDataTextured));
-    
+    //glDrawArrays(GL_TRIANGLES, 0, sizeof(ISS_LowRes_MeshVertexData)/ sizeof(vertexDataTextured));
+    glDrawArrays(GL_TRIANGLES, 0, [self.meshData length]/sizeof(vertexDataTextured));
+
 }
 
 
